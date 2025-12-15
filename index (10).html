@@ -1,0 +1,3490 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Юлия — Автор курсовых и дипломных работ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* Базовые стили и переменные */
+        :root {
+            --primary-dark: #0a254e;
+            --secondary-dark: #1a365d;
+            --accent-color: #ffd700;
+            --accent-light: #fff8dc;
+            --text-primary: #ffffff;
+            --text-secondary: #cbd5e0;
+            --card-bg: #1a365d;
+            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --border-radius: 8px;
+            --container-width: 1400px;
+            --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            --blue-gradient: linear-gradient(135deg, #0a254e 0%, #1a365d 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--primary-dark);
+            transition: var(--transition);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        /* Типография */
+        h1, h2, h3, h4 {
+            font-family: 'Merriweather', serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: var(--gold-gradient);
+        }
+
+        h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Кнопки */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 16px 36px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-family: 'Open Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 215, 0, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--accent-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255, 215, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .btn-danger {
+            background-color: #e53e3e;
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #c53030;
+            transform: translateY(-3px);
+        }
+
+        /* Шапка сайта */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(10, 37, 78, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .header.scrolled {
+            padding: 15px 0;
+            background-color: rgba(10, 37, 78, 0.98);
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Логотип */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transform: rotate(45deg);
+            transition: var(--transition);
+        }
+
+        .logo:hover .logo-icon::before {
+            left: 100%;
+        }
+
+        .logo-text {
+            font-family: 'Merriweather', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Навигация */
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold-gradient);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::before,
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        /* Действия в шапке */
+        .header-actions {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .urgent-order {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .urgent-order:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(255, 107, 107, 0.3);
+        }
+
+        .urgent-timer {
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .theme-toggle:hover {
+            color: var(--accent-color);
+            transform: rotate(30deg);
+        }
+
+        .cart-btn {
+            position: relative;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-btn:hover {
+            color: var(--accent-color);
+            transform: scale(1.1);
+        }
+
+        .cart-badge {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            font-size: 0.8rem;
+            padding: 3px 8px;
+            border-radius: 50%;
+            min-width: 24px;
+            height: 24px;
+            text-align: center;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        /* Герой-секция */
+        .hero {
+            padding-top: 180px;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+            background: var(--blue-gradient);
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            color: var(--accent-color);
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .hero-description {
+            font-size: 1.3rem;
+            margin-bottom: 40px;
+            max-width: 700px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        /* Статистика */
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin: 60px 0;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: block;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 10px;
+        }
+
+        /* Гарантии */
+        .guarantees {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+            animation: fadeInUp 1s ease 0.8s both;
+        }
+
+        .guarantee-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .guarantee-item:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: var(--card-shadow);
+        }
+
+        .guarantee-icon {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 20px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 25px;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        /* Портфолио */
+        .portfolio {
+            background-color: var(--secondary-dark);
+            position: relative;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .portfolio-header h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 12px 28px;
+            background: var(--card-bg);
+            border: 2px solid transparent;
+            border-radius: 30px;
+            color: var(--text-primary);
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: transparent;
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .portfolio-item {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent-color);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+
+        .portfolio-image::after {
+            content: 'ПРЕВЬЮ';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 3rem;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.1);
+            opacity: 0.5;
+        }
+
+        .portfolio-info {
+            padding: 25px;
+        }
+
+        .portfolio-category {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .portfolio-meta {
+            display: flex;
+            justify-content: space-between;
+            margin: 15px 0;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .unique-badge {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 600;
+        }
+
+        .unique-badge.high {
+            color: #48bb78;
+        }
+
+        .unique-badge.medium {
+            color: #ed8936;
+        }
+
+        .grade-badge {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .portfolio-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .portfolio-actions .btn {
+            flex: 1;
+            padding: 12px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Секция услуг */
+        .services {
+            background-color: var(--primary-dark);
+            position: relative;
+        }
+
+        .services-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .services-header h2::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-filters {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.1), transparent);
+            transition: var(--transition);
+        }
+
+        .service-card:hover::before {
+            left: 100%;
+        }
+
+        .service-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--card-shadow);
+            border-color: var(--accent-color);
+        }
+
+        .service-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--accent-color);
+        }
+
+        .service-badge {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            padding: 6px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent-color);
+            margin: 25px 0;
+        }
+
+        .service-details {
+            margin: 25px 0;
+        }
+
+        .service-detail {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+            color: var(--text-secondary);
+        }
+
+        .service-detail i {
+            color: var(--accent-color);
+            width: 20px;
+        }
+
+        .service-actions {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .service-actions .btn {
+            flex: 1;
+            padding: 14px 25px;
+            font-size: 1rem;
+        }
+
+        /* Калькулятор стоимости */
+        .calculator {
+            background-color: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            margin-top: 60px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .calculator h3 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .calculator-controls {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .calc-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .calc-label {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-secondary);
+        }
+
+        .calc-value {
+            font-weight: 600;
+            color: var(--accent-color);
+            font-size: 1.2rem;
+        }
+
+        select, input[type="range"], input[type="number"] {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Open Sans', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        select:focus, input[type="range"]:focus, input[type="number"]:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        input[type="range"] {
+            height: 6px;
+            background: rgba(255, 215, 0, 0.2);
+            border-radius: 3px;
+            outline: none;
+            -webkit-appearance: none;
+            padding: 0;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 24px;
+            height: 24px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .calc-total {
+            text-align: center;
+            padding: 30px;
+            background: rgba(255, 215, 0, 0.1);
+            border-radius: var(--border-radius);
+            border: 2px solid var(--accent-color);
+        }
+
+        .calc-total h4 {
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .total-price {
+            font-size: 3.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Сайдбар корзины */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -500px;
+            width: 500px;
+            height: 100vh;
+            background-color: var(--card-bg);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 40px;
+            overflow-y: auto;
+            box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            border-left: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-cart:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        .cart-items {
+            margin-bottom: 40px;
+        }
+
+        .cart-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .cart-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+        }
+
+        .cart-item-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .cart-item-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .quantity-btn {
+            width: 36px;
+            height: 36px;
+            border: 2px solid var(--accent-color);
+            background: transparent;
+            color: var(--accent-color);
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--accent-color);
+            color: var(--primary-dark);
+        }
+
+        .cart-item-quantity {
+            min-width: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .deadline-selector {
+            display: flex;
+            gap: 10px;
+        }
+
+        .deadline-btn {
+            padding: 8px 20px;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            background: transparent;
+            color: var(--text-secondary);
+            border-radius: 20px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 0.9rem;
+        }
+
+        .deadline-btn.active {
+            border-color: var(--accent-color);
+            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-color);
+        }
+
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            margin-left: auto;
+        }
+
+        .remove-item:hover {
+            transform: scale(1.2);
+        }
+
+        .cart-summary {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid var(--accent-color);
+        }
+
+        .discount-section {
+            background: rgba(255, 215, 0, 0.1);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            margin-bottom: 20px;
+        }
+
+        .discount-input {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .discount-input input {
+            flex: 1;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: var(--accent-color);
+        }
+
+        .cart-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 15px 20px;
+            background-color: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: var(--text-primary);
+            font-family: 'Open Sans', sans-serif;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            background-color: rgba(255, 215, 0, 0.05);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .file-upload {
+            border: 2px dashed rgba(255, 215, 0, 0.3);
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .file-upload:hover {
+            border-color: var(--accent-color);
+            background: rgba(255, 215, 0, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 15px;
+        }
+
+        .cart-empty {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-secondary);
+        }
+
+        .cart-empty i {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            opacity: 0.3;
+        }
+
+        /* Отзывы */
+        .reviews {
+            background-color: var(--secondary-dark);
+            padding: 100px 0;
+        }
+
+        .reviews-slider {
+            max-width: 800px;
+            margin: 60px auto 0;
+            position: relative;
+        }
+
+        .review-item {
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+            text-align: center;
+        }
+
+        .review-text {
+            font-style: italic;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: var(--text-primary);
+        }
+
+        .review-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .author-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent-color);
+        }
+
+        .author-info h4 {
+            color: var(--accent-color);
+            margin-bottom: 5px;
+        }
+
+        /* Футер */
+        .footer {
+            background-color: var(--primary-dark);
+            padding: 80px 0 30px;
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 50px;
+            margin-bottom: 50px;
+        }
+
+        .footer-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+        }
+
+        .footer-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background-color: var(--card-bg);
+            border-radius: 50%;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 1.3rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .social-link:hover {
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            transform: translateY(-5px);
+            border-color: transparent;
+        }
+
+        .footer-links h3 {
+            color: var(--accent-color);
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+            transform: translateX(5px);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: var(--text-secondary);
+        }
+
+        .contact-item i {
+            color: var(--accent-color);
+            font-size: 1.2rem;
+            width: 24px;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Уведомления */
+        .notification {
+            position: fixed;
+            top: 120px;
+            right: 20px;
+            padding: 20px 30px;
+            background: var(--gold-gradient);
+            color: var(--primary-dark);
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
+            z-index: 2000;
+            transform: translateX(150%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            font-weight: 700;
+            max-width: 350px;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Анимации */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Мобильное меню */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 300px;
+            height: 100vh;
+            background-color: var(--card-bg);
+            z-index: 1100;
+            transition: var(--transition);
+            padding: 40px;
+            overflow-y: auto;
+            border-right: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .mobile-menu.active {
+            left: 0;
+        }
+
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.8rem;
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .mobile-nav-link {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.2rem;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-nav-link:hover,
+        .mobile-nav-link.active {
+            color: var(--accent-color);
+            padding-left: 10px;
+        }
+
+        /* Модальные окна */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 40px;
+            max-width: 900px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            transform: translateY(50px);
+            transition: transform 0.4s ease;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .close-modal:hover {
+            color: var(--accent-color);
+            transform: rotate(90deg);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            }
+
+            .cart-sidebar {
+                width: 450px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 40px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+
+            .cart-sidebar {
+                width: 100%;
+                right: -100%;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding-top: 150px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.4rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .calculator-controls {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-description {
+                font-size: 1.1rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 30px;
+            }
+
+            .service-actions {
+                flex-direction: column;
+            }
+
+            .mobile-menu {
+                width: 100%;
+                left: -100%;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Уведомление -->
+    <div class="notification" id="notification"></div>
+
+    <!-- Шапка сайта -->
+    <header class="header" id="header">
+        <div class="container">
+            <div class="header-inner">
+                <!-- Логотип -->
+                <a href="#home" class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Юлия</span>
+                </a>
+
+                <!-- Навигация -->
+                <nav>
+                    <ul class="nav-menu">
+                        <li><a href="#home" class="nav-link active">Главная</a></li>
+                        <li><a href="#portfolio" class="nav-link">Примеры работ</a></li>
+                        <li><a href="#services" class="nav-link">Услуги</a></li>
+                        <li><a href="#reviews" class="nav-link">Отзывы</a></li>
+                        <li><a href="#guarantees" class="nav-link">Гарантии</a></li>
+                        <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    </ul>
+                </nav>
+
+                <!-- Действия в шапке -->
+                <div class="header-actions">
+                    <button class="urgent-order" id="urgentOrder">
+                        <i class="fas fa-bolt"></i>
+                        <span class="urgent-timer" id="urgentTimer">23:59:59</span>
+                    </button>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Сменить тему">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="cart-btn" id="cartToggle" aria-label="Открыть корзину">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </button>
+                    <button class="menu-toggle" id="menuToggle" aria-label="Открыть меню">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <span class="logo-text">Юлия</span>
+            </div>
+            <button class="close-menu" id="closeMenu">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav">
+            <a href="#home" class="mobile-nav-link active">Главная</a>
+            <a href="#portfolio" class="mobile-nav-link">Примеры работ</a>
+            <a href="#services" class="mobile-nav-link">Услуги</a>
+            <a href="#reviews" class="mobile-nav-link">Отзывы</a>
+            <a href="#guarantees" class="mobile-nav-link">Гарантии</a>
+            <a href="#contact" class="mobile-nav-link">Контакты</a>
+            <a href="#" class="mobile-nav-link" id="mobileCartBtn">Корзина</a>
+        </nav>
+    </div>
+
+    <!-- Герой-секция -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Юлия</h1>
+                <h2 class="hero-subtitle">Автор курсовых и дипломных работ</h2>
+                <p class="hero-description">
+                    Профессиональный автор академических работ с 10-летним опытом. 
+                    Специализируюсь на написании курсовых, дипломных работ, научных статей 
+                    по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам. 
+                    Гарантирую качество, уникальность и соблюдение сроков.
+                </p>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="10">0</span>
+                        <span class="stat-label">лет опыта</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="500">0</span>
+                        <span class="stat-label">выполненных работ</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="95">0</span>
+                        <span class="stat-label">защищенных на "отлично"</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-target="200">0</span>
+                        <span class="stat-label">постоянных клиентов</span>
+                    </div>
+                </div>
+
+                <div class="guarantees">
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-check-double"></i>
+                        </div>
+                        <h3>100% Уникальность</h3>
+                        <p>Проверка в Antiplagiat.ru, текст уникален</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Конфиденциальность</h3>
+                        <p>Ваши данные защищены, работа только для вас</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Соблюдение сроков</h3>
+                        <p>Сдаем работу точно в оговоренный срок</p>
+                    </div>
+                    <div class="guarantee-item">
+                        <div class="guarantee-icon">
+                            <i class="fas fa-sync-alt"></i>
+                        </div>
+                        <h3>Бесплатные доработки</h3>
+                        <p>Исправления по замечаниям бесплатно</p>
+                    </div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-primary">
+                        <i class="fas fa-file-alt"></i> Заказать работу
+                    </a>
+                    <a href="#contact" class="btn btn-secondary">
+                        <i class="fas fa-comments"></i> Бесплатная консультация
+                    </a>
+                    <button class="btn btn-secondary" id="downloadSample">
+                        <i class="fas fa-download"></i> Скачать пример
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Портфолио -->
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="portfolio-header">
+                <h2>Примеры работ</h2>
+                <p>Реальные работы, выполненные для студентов различных вузов</p>
+
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">Все работы</button>
+                    <button class="filter-btn" data-filter="economics">Экономика</button>
+                    <button class="filter-btn" data-filter="law">Право</button>
+                    <button class="filter-btn" data-filter="pedagogy">Педагогика</button>
+                    <button class="filter-btn" data-filter="psychology">Психология</button>
+                    <button class="filter-btn" data-filter="technical">Технические</button>
+                </div>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <!-- Работы будут загружены через JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Секция услуг -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="services-header">
+                <h2>Услуги и цены</h2>
+                <p>Профессиональное написание академических работ с гарантией качества</p>
+
+                <div class="services-filters">
+                    <button class="filter-btn active" data-filter="all">Все услуги</button>
+                    <button class="filter-btn" data-filter="coursework">Курсовые</button>
+                    <button class="filter-btn" data-filter="diploma">Дипломные</button>
+                    <button class="filter-btn" data-filter="article">Статьи</button>
+                    <button class="filter-btn" data-filter="other">Прочее</button>
+                </div>
+            </div>
+
+            <div class="services-grid" id="servicesGrid">
+                <!-- Услуги будут загружены через JS -->
+            </div>
+
+            <!-- Калькулятор стоимости -->
+            <div class="calculator">
+                <h3>Калькулятор стоимости</h3>
+                <div class="calculator-controls">
+                    <div class="calc-group">
+                        <label class="calc-label">
+                            Тип работы
+                            <span class="calc-value" id="workTypeValue">Курсовая</span>
+                        </label>
+                        <select id="workType">
+                            <option value="coursework">Курсовая работа</option>
+                            <option value="diploma_bachelor">Дипломная работа (бакалавр)</option>
+                            <option value="diploma_master">Дипломная работа (магистр)</option>
+                            <option value="article">Научная статья</option>
+                            <option value="essay">Реферат/Эссе</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">
+                            Предметная область
+                            <span class="calc-value" id="subjectValue">Гуманитарная</span>
+                        </label>
+                        <select id="subject">
+                            <option value="humanitarian">Гуманитарная</option>
+                            <option value="economic">Экономическая</option>
+                            <option value="technical">Техническая</option>
+                            <option value="natural">Естественнонаучная</option>
+                            <option value="medical">Медицинская</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">
+                            Срок выполнения
+                            <span class="calc-value" id="deadlineValue">14 дней</span>
+                        </label>
+                        <select id="deadline">
+                            <option value="30">30 дней (стандартный)</option>
+                            <option value="14">14 дней</option>
+                            <option value="7">7 дней (срочный)</option>
+                            <option value="3">3 дня (очень срочный)</option>
+                            <option value="1">24 часа (экспресс)</option>
+                        </select>
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">
+                            Объем работы
+                            <span class="calc-value" id="pagesValue">30 страниц</span>
+                        </label>
+                        <input type="range" id="pages" min="10" max="100" value="30" step="5">
+                    </div>
+                    <div class="calc-group">
+                        <label class="calc-label">
+                            Уникальность
+                            <span class="calc-value" id="uniqueValue">80%</span>
+                        </label>
+                        <input type="range" id="unique" min="70" max="95" value="80" step="5">
+                    </div>
+                    <div class="calc-group">
+                        <label>
+                            <input type="checkbox" id="hasPractice"> Есть практическая часть
+                        </label>
+                        <label>
+                            <input type="checkbox" id="hasPresentation"> Нужна презентация
+                        </label>
+                        <label>
+                            <input type="checkbox" id="hasReview"> Нужен рецензент
+                        </label>
+                    </div>
+                </div>
+                <div class="calc-total">
+                    <h4>Примерная стоимость</h4>
+                    <div class="total-price" id="totalPrice">5 000 ₽</div>
+                    <p>Точная стоимость рассчитывается после получения требований</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Отзывы -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <h2 style="text-align: center;">Отзывы клиентов</h2>
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 40px;">
+                Что говорят студенты, которые уже получили свои работы
+            </p>
+
+            <div class="reviews-slider">
+                <div class="review-item">
+                    <div class="review-text">
+                        "Заказывала дипломную работу по экономике. Юлия выполнила работу досрочно, 
+                        все расчеты были точными, уникальность 92%. Защитила на отлично! 
+                        Рекомендую всем, кто ценит качество и профессионализм."
+                    </div>
+                    <div class="review-author">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Анна" class="author-avatar">
+                        <div class="author-info">
+                            <h4>Анна Смирнова</h4>
+                            <p>МГУ, экономический факультет</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <div class="logo-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="logo-text">Юлия</span>
+                    </div>
+                    <p class="footer-description">
+                        Профессиональный автор академических работ с 10-летним опытом. 
+                        Гарантирую качество, уникальность и соблюдение сроков выполнения работ.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="Telegram">
+                            <i class="fab fa-telegram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="WhatsApp">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="VK">
+                            <i class="fab fa-vk"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="#home"><i class="fas fa-chevron-right"></i> Главная</a></li>
+                        <li><a href="#portfolio"><i class="fas fa-chevron-right"></i> Примеры работ</a></li>
+                        <li><a href="#services"><i class="fas fa-chevron-right"></i> Услуги и цены</a></li>
+                        <li><a href="#reviews"><i class="fas fa-chevron-right"></i> Отзывы</a></li>
+                        <li><a href="#guarantees"><i class="fas fa-chevron-right"></i> Гарантии</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links">
+                    <h3>Услуги</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Курсовые работы</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Дипломные работы</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Научные статьи</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Рефераты и эссе</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Повышение уникальности</a></li>
+                    </ul>
+                </div>
+
+                <div class="contact-info">
+                    <h3>Контакты</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>yulia.academic@mail.ru</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+7 (999) 123-45-67</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Москва, Россия</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Пн-Вс: 9:00-22:00</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2024 Юлия — Автор курсовых и дипломных работ. Все права защищены.</p>
+                <p style="margin-top: 10px; font-size: 0.8rem; color: rgba(255, 255, 255, 0.5);">
+                    Информация на сайте носит ознакомительный характер
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Сайдбар корзины -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Корзина заказов</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+
+        <div class="cart-items" id="cartItems">
+            <!-- Услуги будут загружены динамически -->
+        </div>
+
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Корзина пуста</p>
+            <p>Добавьте услуги из раздела "Услуги"</p>
+        </div>
+
+        <div class="cart-summary" id="cartSummary">
+            <div class="discount-section">
+                <h4>Скидки и промокоды</h4>
+                <div class="discount-input">
+                    <input type="text" id="promoCode" placeholder="Введите промокод">
+                    <button class="btn btn-secondary" id="applyPromo">Применить</button>
+                </div>
+                <div id="discountInfo" style="margin-top: 10px; font-size: 0.9rem;"></div>
+            </div>
+
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span id="cartTotal">0 ₽</span>
+            </div>
+
+            <form class="cart-form" id="cartForm">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clientName">Ваше имя *</label>
+                        <input type="text" id="clientName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientEmail">Email *</label>
+                        <input type="email" id="clientEmail" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientPhone">Телефон *</label>
+                    <input type="tel" id="clientPhone" required>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="clientUniversity">ВУЗ *</label>
+                        <input type="text" id="clientUniversity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="clientSpeciality">Специальность *</label>
+                        <input type="text" id="clientSpeciality" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="workTopic">Тема работы *</label>
+                    <input type="text" id="workTopic" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="workSubject">Предмет *</label>
+                    <input type="text" id="workSubject" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="workDeadline">Дедлайн сдачи *</label>
+                    <input type="date" id="workDeadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="requirementsFile">Методические требования</label>
+                    <div class="file-upload" id="fileUpload">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Перетащите файл сюда или кликните для загрузки</p>
+                        <input type="file" id="requirementsFile" style="display: none;">
+                    </div>
+                    <div id="fileName" style="margin-top: 10px; font-size: 0.9rem;"></div>
+                </div>
+
+                <div class="form-group">
+                    <label for="clientMessage">Дополнительные пожелания</label>
+                    <textarea id="clientMessage" rows="4" placeholder="Опишите ваши требования, особенности работы..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%;">
+                    <i class="fas fa-paper-plane"></i> Оформить заказ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Данные услуг
+        const services = [
+            {
+                id: 1,
+                name: "Курсовая работа (базовая)",
+                category: "coursework",
+                level: "basic",
+                description: "Написание курсовой работы по гуманитарным или экономическим дисциплинам",
+                price: 5000,
+                pricePerPage: 167,
+                minPages: 30,
+                duration: "14-21 день",
+                icon: "fas fa-file-alt",
+                features: [
+                    "Теоретическая часть",
+                    "Аналитический раздел",
+                    "Список литературы (от 20 источников)",
+                    "Оформление по ГОСТ",
+                    "Проверка уникальности",
+                    "Титульный лист, содержание"
+                ],
+                subjects: ["humanitarian", "economic"]
+            },
+            {
+                id: 2,
+                name: "Курсовая работа (сложная)",
+                category: "coursework",
+                level: "complex",
+                description: "Курсовая работа с практической частью, расчетами, техническими дисциплинами",
+                price: 8000,
+                pricePerPage: 200,
+                minPages: 35,
+                duration: "21-28 дней",
+                icon: "fas fa-file-contract",
+                features: [
+                    "Теоретическая и практическая части",
+                    "Расчеты, графики, таблицы",
+                    "Эмпирическое исследование",
+                    "Список литературы (от 30 источников)",
+                    "Приложения",
+                    "Рецензия (опционально)"
+                ],
+                subjects: ["technical", "economic", "natural", "medical"]
+            },
+            {
+                id: 3,
+                name: "Дипломная работа (бакалавр)",
+                category: "diploma",
+                level: "bachelor",
+                description: "Полноценная дипломная работа для бакалавриата с исследовательской частью",
+                price: 15000,
+                pricePerPage: 250,
+                minPages: 60,
+                duration: "30-45 дней",
+                icon: "fas fa-graduation-cap",
+                features: [
+                    "Полная структура ВКР",
+                    "Теоретико-методологическая глава",
+                    "Аналитическая/практическая глава",
+                    "Проектная/рекомендательная глава",
+                    "Список литературы (от 50 источников)",
+                    "Приложения, презентация",
+                    "Автореферат, аннотация"
+                ],
+                subjects: ["humanitarian", "economic", "technical", "natural", "medical"]
+            },
+            {
+                id: 4,
+                name: "Дипломная работа (магистр)",
+                category: "diploma",
+                level: "master",
+                description: "Магистерская диссертация с глубоким научным исследованием",
+                price: 25000,
+                pricePerPage: 350,
+                minPages: 80,
+                duration: "45-60 дней",
+                icon: "fas fa-user-graduate",
+                features: [
+                    "Научная новизна исследования",
+                    "Глубокий теоретический анализ",
+                    "Эмпирическое исследование",
+                    "Статистическая обработка данных",
+                    "Научные выводы и рекомендации",
+                    "Список литературы (от 70 источников)",
+                    "Публикация статьи (опционально)"
+                ],
+                subjects: ["humanitarian", "economic", "technical", "natural", "medical"]
+            },
+            {
+                id: 5,
+                name: "Научная статья (ВАК)",
+                category: "article",
+                level: "vak",
+                description: "Написание статьи для журналов из перечня ВАК",
+                price: 12000,
+                pricePerPage: 600,
+                minPages: 20,
+                duration: "14-21 день",
+                icon: "fas fa-newspaper",
+                features: [
+                    "Соответствие требованиям журнала",
+                    "Аннотация, ключевые слова",
+                    "Научный аппарат",
+                    "Библиография по ГОСТ",
+                    "Рецензирование",
+                    "Помощь в публикации"
+                ],
+                subjects: ["humanitarian", "economic", "technical", "natural", "medical"]
+            },
+            {
+                id: 6,
+                name: "Реферат/Эссе",
+                category: "other",
+                level: "simple",
+                description: "Написание реферата, эссе, доклада по заданной теме",
+                price: 2000,
+                pricePerPage: 200,
+                minPages: 10,
+                duration: "3-7 дней",
+                icon: "fas fa-pen-fancy",
+                features: [
+                    "Раскрытие темы",
+                    "Логическая структура",
+                    "Аргументация позиции",
+                    "Список литературы",
+                    "Оформление по ГОСТ",
+                    "Проверка уникальности"
+                ],
+                subjects: ["humanitarian", "economic"]
+            },
+            {
+                id: 7,
+                name: "Повышение уникальности",
+                category: "other",
+                level: "unique",
+                description: "Повышение оригинальности текста без изменения содержания",
+                price: 1000,
+                pricePerPage: 50,
+                minPages: 1,
+                duration: "1-3 дня",
+                icon: "fas fa-chart-line",
+                features: [
+                    "Повышение до 80-95%",
+                    "Сохранение смысла",
+                    "Ручная обработка",
+                    "Проверка в Антиплагиат",
+                    "Гарантия результата",
+                    "Конфиденциальность"
+                ],
+                subjects: ["humanitarian", "economic", "technical", "natural", "medical"]
+            },
+            {
+                id: 8,
+                name: "Срочное написание",
+                category: "other",
+                level: "urgent",
+                description: "Экспресс-написание работы в сжатые сроки (дополнение к основной услуге)",
+                price: 0, // Будет рассчитана как доплата
+                priceMultiplier: 1.5,
+                duration: "24-72 часа",
+                icon: "fas fa-bolt",
+                features: [
+                    "Приоритет в очереди",
+                    "Круглосуточная работа",
+                    "Быстрая связь",
+                    "Гарантия сроков",
+                    "Доплата 50% к стоимости"
+                ],
+                subjects: ["humanitarian", "economic", "technical", "natural", "medical"]
+            }
+        ];
+
+        // Данные портфолио
+        const portfolioItems = [
+            { 
+                id: 1, 
+                category: "economics", 
+                image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Анализ инвестиционной привлекательности предприятия", 
+                discipline: "Экономика предприятия",
+                year: "2023",
+                pages: "45",
+                unique: "92",
+                grade: "5"
+            },
+            { 
+                id: 2, 
+                category: "law", 
+                image: "https://images.unsplash.com/photo-1589391886085-8b6b0ac72a1a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Правовое регулирование цифровых активов", 
+                discipline: "Гражданское право",
+                year: "2023",
+                pages: "65",
+                unique: "88",
+                grade: "5"
+            },
+            { 
+                id: 3, 
+                category: "pedagogy", 
+                image: "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Инновационные технологии в дошкольном образовании", 
+                discipline: "Педагогика",
+                year: "2022",
+                pages: "55",
+                unique: "90",
+                grade: "5"
+            },
+            { 
+                id: 4, 
+                category: "psychology", 
+                image: "https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Влияние стресса на профессиональное выгорание", 
+                discipline: "Психология",
+                year: "2023",
+                pages: "50",
+                unique: "85",
+                grade: "4"
+            },
+            { 
+                id: 5, 
+                category: "technical", 
+                image: "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Разработка системы управления базой данных", 
+                discipline: "Информационные технологии",
+                year: "2023",
+                pages: "70",
+                unique: "95",
+                grade: "5"
+            },
+            { 
+                id: 6, 
+                category: "economics", 
+                image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80", 
+                title: "Маркетинговая стратегия развития компании", 
+                discipline: "Маркетинг",
+                year: "2022",
+                pages: "48",
+                unique: "87",
+                grade: "5"
+            }
+        ];
+
+        // Промокоды и скидки
+        const promoCodes = {
+            "STUDENT10": { discount: 10, description: "Скидка 10% для студентов" },
+            "FIRSTORDER": { discount: 15, description: "Скидка 15% на первый заказ" },
+            "TWOINONE": { discount: 20, description: "Скидка 20% при заказе двух работ" },
+            "DIPLOMA25": { discount: 25, description: "Скидка 25% на дипломные работы" }
+        };
+
+        // Главный объект приложения
+        const AcademicWriterApp = {
+            cart: [],
+            currentServiceFilter: 'all',
+            currentPortfolioFilter: 'all',
+            appliedPromo: null,
+            discount: 0,
+            urgentTimer: null,
+
+            // Инициализация
+            init() {
+                this.loadCartFromStorage();
+                this.renderServices();
+                this.renderPortfolio();
+                this.setupEventListeners();
+                this.updateCartCount();
+                this.animateStats();
+                this.setupCalculator();
+                this.setupScrollEffects();
+                this.startUrgentTimer();
+                this.setupFileUpload();
+            },
+
+            // Загрузка корзины из localStorage
+            loadCartFromStorage() {
+                const savedCart = localStorage.getItem('academic_cart');
+                if (savedCart) {
+                    this.cart = JSON.parse(savedCart);
+                }
+            },
+
+            // Сохранение корзины в localStorage
+            saveCartToStorage() {
+                localStorage.setItem('academic_cart', JSON.stringify(this.cart));
+            },
+
+            // Рендеринг услуг
+            renderServices() {
+                const servicesGrid = document.getElementById('servicesGrid');
+                servicesGrid.innerHTML = '';
+
+                const filteredServices = this.currentServiceFilter === 'all' 
+                    ? services 
+                    : services.filter(service => service.category === this.currentServiceFilter);
+
+                filteredServices.forEach(service => {
+                    const serviceCard = this.createServiceCard(service);
+                    servicesGrid.appendChild(serviceCard);
+                });
+            },
+
+            // Создание карточки услуги
+            createServiceCard(service) {
+                const card = document.createElement('div');
+                card.className = 'service-card';
+                card.dataset.category = service.category;
+
+                const priceDisplay = service.id === 8 
+                    `+50% к стоимости` 
+                    : `от ${service.price.toLocaleString()} ₽`;
+
+                card.innerHTML = `
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <i class="${service.icon}"></i>
+                        </div>
+                        <span class="service-badge">${service.level === 'basic' ? 'Базовый' : 
+                                                     service.level === 'complex' ? 'Сложный' :
+                                                     service.level === 'bachelor' ? 'Бакалавр' :
+                                                     service.level === 'master' ? 'Магистр' :
+                                                     service.level === 'vak' ? 'ВАК' :
+                                                     service.level === 'simple' ? 'Простой' :
+                                                     service.level === 'unique' ? 'Уникальность' : 'Срочный'}</span>
+                    </div>
+                    <h3>${service.name}</h3>
+                    <p>${service.description}</p>
+
+                    <div class="service-details">
+                        ${service.features.map(feature => `
+                            <div class="service-detail">
+                                <i class="fas fa-check"></i>
+                                <span>${feature}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="service-price">${priceDisplay}</div>
+                    <div class="service-detail">
+                        <i class="far fa-clock"></i>
+                        <span>Срок выполнения: ${service.duration}</span>
+                    </div>
+                    <div class="service-detail">
+                        <i class="fas fa-file"></i>
+                        <span>Объем: от ${service.minPages} страниц</span>
+                    </div>
+
+                    <div class="service-actions">
+                        <button class="btn btn-secondary calculate-price" data-id="${service.id}">
+                            <i class="fas fa-calculator"></i> Рассчитать
+                        </button>
+                        <button class="btn btn-primary add-service" data-id="${service.id}">
+                            <i class="fas fa-cart-plus"></i> В корзину
+                        </button>
+                    </div>
+                `;
+
+                // Обработчики событий
+                card.querySelector('.add-service').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.addToCart(service.id);
+                });
+
+                card.querySelector('.calculate-price').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.showCalculatorModal(service);
+                });
+
+                return card;
+            },
+
+            // Рендеринг портфолио
+            renderPortfolio() {
+                const portfolioGrid = document.getElementById('portfolioGrid');
+                portfolioGrid.innerHTML = '';
+
+                const filteredItems = this.currentPortfolioFilter === 'all' 
+                    ? portfolioItems 
+                    : portfolioItems.filter(item => item.category === this.currentPortfolioFilter);
+
+                filteredItems.forEach(item => {
+                    const portfolioItem = this.createPortfolioItem(item);
+                    portfolioGrid.appendChild(portfolioItem);
+                });
+            },
+
+            // Создание элемента портфолио
+            createPortfolioItem(item) {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'portfolio-item';
+                itemElement.dataset.category = item.category;
+
+                const categoryLabels = {
+                    'economics': 'Экономика',
+                    'law': 'Право',
+                    'pedagogy': 'Педагогика',
+                    'psychology': 'Психология',
+                    'technical': 'Технические'
+                };
+
+                const uniqueClass = item.unique >= 90 ? 'high' : item.unique >= 80 ? 'medium' : 'low';
+
+                itemElement.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" class="portfolio-image">
+                    ${item.grade ? `<div class="grade-badge">${item.grade}</div>` : ''}
+                    <div class="portfolio-info">
+                        <span class="portfolio-category">${categoryLabels[item.category]}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.discipline}</p>
+
+                        <div class="portfolio-meta">
+                            <div>
+                                <div><i class="far fa-calendar"></i> ${item.year} год</div>
+                                <div><i class="fas fa-file"></i> ${item.pages} стр.</div>
+                            </div>
+                            <div class="unique-badge ${uniqueClass}">
+                                <i class="fas fa-chart-line"></i> ${item.unique}%
+                            </div>
+                        </div>
+
+                        <div class="portfolio-actions">
+                            <button class="btn btn-secondary view-sample" data-id="${item.id}">
+                                <i class="fas fa-eye"></i> Фрагмент
+                            </button>
+                            <button class="btn btn-primary order-similar" data-id="${item.id}">
+                                <i class="fas fa-copy"></i> Заказать
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                // Обработчики событий
+                itemElement.querySelector('.view-sample').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.showSampleModal(item);
+                });
+
+                itemElement.querySelector('.order-similar').addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    this.orderSimilarWork(item);
+                });
+
+                return itemElement;
+            },
+
+            // Показать фрагмент работы
+            showSampleModal(item) {
+                const modalHTML = `
+                    <div class="modal-overlay active" id="sampleModal">
+                        <div class="modal-content">
+                            <button class="close-modal">&times;</button>
+                            <div class="sample-content">
+                                <div class="sample-header">
+                                    <h2>${item.title}</h2>
+                                    <div style="display: flex; gap: 20px; margin-top: 10px;">
+                                        <span class="portfolio-category">${item.discipline}</span>
+                                        <span class="unique-badge ${item.unique >= 90 ? 'high' : 'medium'}">Уникальность: ${item.unique}%</span>
+                                    </div>
+                                </div>
+
+                                <div class="sample-preview" style="margin: 30px 0; padding: 20px; background: rgba(0,0,0,0.3); border-radius: var(--border-radius);">
+                                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Фрагмент работы (первые 3 страницы)</h3>
+                                    <div style="position: relative;">
+                                        <div style="background: white; color: black; padding: 30px; border-radius: 5px; min-height: 400px; font-family: 'Times New Roman', serif; line-height: 1.5;">
+                                            <div style="text-align: center; margin-bottom: 30px;">
+                                                <h3 style="font-size: 16pt; margin-bottom: 10px;">${item.title}</h3>
+                                                <p style="font-size: 14pt;">Курсовая работа</p>
+                                                <p style="font-size: 14pt;">по дисциплине: "${item.discipline}"</p>
+                                            </div>
+
+                                            <div style="text-align: center; margin-bottom: 30px;">
+                                                <h4 style="font-size: 14pt;">Содержание</h4>
+                                                <div style="text-align: left; margin-left: 100px;">
+                                                    <p>Введение........................................................3</p>
+                                                    <p>Глава 1. Теоретические основы...................................5</p>
+                                                    <p>1.1. Понятие и сущность.........................................5</p>
+                                                    <p>1.2. Методологические подходы..................................12</p>
+                                                    <p>Глава 2. Аналитическая часть..................................18</p>
+                                                    <p>2.1. Анализ текущего состояния...............................18</p>
+                                                    <p>2.2. Выявление проблем........................................25</p>
+                                                    <p>Глава 3. Практические рекомендации...........................30</p>
+                                                    <p>Заключение....................................................35</p>
+                                                    <p>Список литературы............................................37</p>
+                                                    <p>Приложения....................................................40</p>
+                                                </div>
+                                            </div>
+
+                                            <div>
+                                                <h4 style="font-size: 14pt; text-align: center;">Введение</h4>
+                                                <p style="text-indent: 1.5cm; text-align: justify;">
+                                                    Актуальность исследования обусловлена возрастающей важностью рассматриваемой проблемы 
+                                                    в современных условиях. В настоящее время наблюдается тенденция к увеличению значимости 
+                                                    ${item.discipline.toLowerCase()} в контексте социально-экономического развития.
+                                                </p>
+                                                <p style="text-indent: 1.5cm; text-align: justify;">
+                                                    Целью работы является анализ ${item.title.toLowerCase()} и разработка практических 
+                                                    рекомендаций по совершенствованию. Для достижения поставленной цели необходимо решить 
+                                                    следующие задачи: рассмотреть теоретические основы, провести анализ текущего состояния, 
+                                                    выявить проблемы и разработать рекомендации.
+                                                </p>
+                                            </div>
+                                        </div>
+                                        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: repeating-linear-gradient(0deg, transparent, transparent 29px, rgba(255,215,0,0.1) 29px, rgba(255,215,0,0.1) 30px); pointer-events: none;"></div>
+                                    </div>
+                                    <p style="text-align: center; margin-top: 15px; color: var(--text-secondary); font-size: 0.9rem;">
+                                        <i class="fas fa-lock"></i> Полный текст доступен только после оформления заказа
+                                    </p>
+                                </div>
+
+                                <div class="sample-structure" style="margin: 30px 0;">
+                                    <h3 style="color: var(--accent-color); margin-bottom: 15px;">Структура работы</h3>
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                                            <h4 style="font-size: 1rem; color: var(--accent-color); margin-bottom: 5px;">Введение</h4>
+                                            <p style="font-size: 0.9rem;">Актуальность, цель, задачи, методы исследования</p>
+                                        </div>
+                                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                                            <h4 style="font-size: 1rem; color: var(--accent-color); margin-bottom: 5px;">Теоретическая часть</h4>
+                                            <p style="font-size: 0.9rem;">Анализ литературы, понятийный аппарат</p>
+                                        </div>
+                                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                                            <h4 style="font-size: 1rem; color: var(--accent-color); margin-bottom: 5px;">Аналитическая часть</h4>
+                                            <p style="font-size: 0.9rem;">Исследование, расчеты, анализ данных</p>
+                                        </div>
+                                        <div style="background: rgba(255,255,255,0.05); padding: 15px; border-radius: 5px;">
+                                            <h4 style="font-size: 1rem; color: var(--accent-color); margin-bottom: 5px;">Практические рекомендации</h4>
+                                            <p style="font-size: 0.9rem;">Предложения, меры, план реализации</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="sample-actions" style="text-align: center; margin-top: 30px;">
+                                    <button class="btn btn-primary order-this-work" data-id="${item.id}" style="padding: 15px 40px; font-size: 1.1rem;">
+                                        <i class="fas fa-copy"></i> Заказать подобную работу
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+                // Обработчики событий
+                document.querySelector('#sampleModal .close-modal').addEventListener('click', () => {
+                    document.getElementById('sampleModal').remove();
+                });
+
+                document.querySelector('.order-this-work').addEventListener('click', () => {
+                    this.orderSimilarWork(item);
+                    document.getElementById('sampleModal').remove();
+                });
+
+                document.getElementById('sampleModal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('sampleModal')) {
+                        document.getElementById('sampleModal').remove();
+                    }
+                });
+            },
+
+            // Заказать подобную работу
+            orderSimilarWork(item) {
+                // Определяем тип услуги на основе дисциплины
+                let serviceId;
+                if (item.category === 'economics' || item.category === 'law') {
+                    serviceId = 1; // Базовая курсовая
+                } else if (item.category === 'technical') {
+                    serviceId = 2; // Сложная курсовая
+                } else {
+                    serviceId = 1; // Базовая по умолчанию
+                }
+
+                this.addToCart(serviceId);
+                this.showNotification(`Заказ на работу по теме "${item.title}" добавлен в корзину`);
+
+                // Открываем корзину
+                this.renderCart();
+                document.getElementById('cartSidebar').classList.add('active');
+            },
+
+            // Модальное окно калькулятора
+            showCalculatorModal(service) {
+                const modalHTML = `
+                    <div class="modal-overlay active" id="calculatorModal">
+                        <div class="modal-content" style="max-width: 600px;">
+                            <button class="close-modal">&times;</button>
+                            <h2 style="margin-bottom: 20px;">Расчет стоимости: ${service.name}</h2>
+
+                            <div class="calculator-controls" style="grid-template-columns: 1fr;">
+                                <div class="calc-group">
+                                    <label class="calc-label">
+                                        Количество страниц
+                                        <span class="calc-value" id="modalPagesValue">${service.minPages}</span>
+                                    </label>
+                                    <input type="range" id="modalPages" min="${service.minPages}" max="${service.minPages * 2}" value="${service.minPages}" step="5">
+                                </div>
+
+                                <div class="calc-group">
+                                    <label class="calc-label">
+                                        Срок выполнения
+                                        <span class="calc-value" id="modalDeadlineValue">14 дней</span>
+                                    </label>
+                                    <select id="modalDeadline">
+                                        <option value="30">30 дней (стандартный)</option>
+                                        <option value="14" selected>14 дней</option>
+                                        <option value="7">7 дней (срочный)</option>
+                                        <option value="3">3 дня (очень срочный)</option>
+                                        <option value="1">24 часа (экспресс)</option>
+                                    </select>
+                                </div>
+
+                                <div class="calc-group">
+                                    <label class="calc-label">
+                                        Уникальность
+                                        <span class="calc-value" id="modalUniqueValue">80%</span>
+                                    </label>
+                                    <input type="range" id="modalUnique" min="70" max="95" value="80" step="5">
+                                </div>
+
+                                <div class="calc-group">
+                                    <label>
+                                        <input type="checkbox" id="modalHasPractice"> Есть практическая часть
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="modalHasPresentation"> Нужна презентация
+                                    </label>
+                                    <label>
+                                        <input type="checkbox" id="modalHasReview"> Нужен рецензент
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="calc-total" style="margin-top: 30px;">
+                                <h4>Примерная стоимость</h4>
+                                <div class="total-price" id="modalTotalPrice">${service.price.toLocaleString()} ₽</div>
+                                <p>Точная стоимость рассчитывается после получения требований</p>
+                            </div>
+
+                            <div class="service-actions" style="margin-top: 30px;">
+                                <button class="btn btn-primary add-with-params" data-id="${service.id}" style="width: 100%;">
+                                    <i class="fas fa-cart-plus"></i> Добавить в корзину с этими параметрами
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+                // Настройка калькулятора
+                const pagesInput = document.getElementById('modalPages');
+                const pagesValue = document.getElementById('modalPagesValue');
+                const deadlineSelect = document.getElementById('modalDeadline');
+                const deadlineValue = document.getElementById('modalDeadlineValue');
+                const uniqueInput = document.getElementById('modalUnique');
+                const uniqueValue = document.getElementById('modalUniqueValue');
+                const totalPrice = document.getElementById('modalTotalPrice');
+
+                const updateModalCalculator = () => {
+                    const pages = parseInt(pagesInput.value);
+                    const deadline = parseInt(deadlineSelect.value);
+                    const unique = parseInt(uniqueInput.value);
+                    const hasPractice = document.getElementById('modalHasPractice').checked;
+                    const hasPresentation = document.getElementById('modalHasPresentation').checked;
+                    const hasReview = document.getElementById('modalHasReview').checked;
+
+                    // Базовая цена
+                    let price = service.pricePerPage ? service.pricePerPage * pages : service.price;
+
+                    // Наценки
+                    if (deadline <= 3) price *= 1.5; // Очень срочный
+                    else if (deadline <= 7) price *= 1.3; // Срочный
+                    else if (deadline <= 14) price *= 1.1; // Ускоренный
+
+                    if (unique >= 90) price *= 1.2;
+                    else if (unique >= 85) price *= 1.1;
+
+                    if (hasPractice) price *= 1.3;
+                    if (hasPresentation) price += 2000;
+                    if (hasReview) price += 3000;
+
+                    // Обновляем отображение
+                    pagesValue.textContent = pages;
+                    deadlineValue.textContent = deadline === 1 ? '24 часа' : `${deadline} дней`;
+                    uniqueValue.textContent = `${unique}%`;
+                    totalPrice.textContent = Math.round(price).toLocaleString() + ' ₽';
+                };
+
+                pagesInput.addEventListener('input', updateModalCalculator);
+                deadlineSelect.addEventListener('change', updateModalCalculator);
+                uniqueInput.addEventListener('input', updateModalCalculator);
+                document.getElementById('modalHasPractice').addEventListener('change', updateModalCalculator);
+                document.getElementById('modalHasPresentation').addEventListener('change', updateModalCalculator);
+                document.getElementById('modalHasReview').addEventListener('change', updateModalCalculator);
+
+                // Инициализация
+                updateModalCalculator();
+
+                // Обработчики событий
+                document.querySelector('#calculatorModal .close-modal').addEventListener('click', () => {
+                    document.getElementById('calculatorModal').remove();
+                });
+
+                document.querySelector('.add-with-params').addEventListener('click', () => {
+                    const params = {
+                        pages: parseInt(pagesInput.value),
+                        deadline: parseInt(deadlineSelect.value),
+                        unique: parseInt(uniqueInput.value),
+                        hasPractice: document.getElementById('modalHasPractice').checked,
+                        hasPresentation: document.getElementById('modalHasPresentation').checked,
+                        hasReview: document.getElementById('modalHasReview').checked
+                    };
+
+                    this.addToCartWithParams(service.id, params);
+                    document.getElementById('calculatorModal').remove();
+                });
+
+                document.getElementById('calculatorModal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('calculatorModal')) {
+                        document.getElementById('calculatorModal').remove();
+                    }
+                });
+            },
+
+            // Добавление в корзину с параметрами
+            addToCartWithParams(serviceId, params) {
+                const service = services.find(s => s.id === serviceId);
+                if (!service) return;
+
+                // Для срочного написания нужна основная услуга
+                if (serviceId === 8) {
+                    this.showNotification('Для заказа срочного написания сначала выберите основную услугу');
+                    return;
+                }
+
+                const existingItem = this.cart.find(item => 
+                    item.id === serviceId && 
+                    JSON.stringify(item.params) === JSON.stringify(params)
+                );
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.cart.push({
+                        id: service.id,
+                        name: service.name,
+                        basePrice: service.pricePerPage ? service.pricePerPage * params.pages : service.price,
+                        params: params,
+                        quantity: 1
+                    });
+                }
+
+                this.saveCartToStorage();
+                this.updateCartCount();
+                this.showNotification(`"${service.name}" добавлено в корзину`);
+
+                if (this.isCartOpen()) {
+                    this.renderCart();
+                }
+            },
+
+            // Добавление в корзину
+            addToCart(serviceId) {
+                const service = services.find(s => s.id === serviceId);
+                if (!service) return;
+
+                // Для срочного написания нужна основная услуга
+                if (serviceId === 8) {
+                    this.showUrgencyModal();
+                    return;
+                }
+
+                const existingItem = this.cart.find(item => item.id === serviceId && !item.params);
+
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    this.cart.push({
+                        id: service.id,
+                        name: service.name,
+                        basePrice: service.price,
+                        quantity: 1
+                    });
+                }
+
+                this.saveCartToStorage();
+                this.updateCartCount();
+                this.showNotification(`"${service.name}" добавлено в корзину`);
+
+                if (this.isCartOpen()) {
+                    this.renderCart();
+                }
+            },
+
+            // Модальное окно для срочного написания
+            showUrgencyModal() {
+                const modalHTML = `
+                    <div class="modal-overlay active" id="urgencyModal">
+                        <div class="modal-content" style="max-width: 500px;">
+                            <button class="close-modal">&times;</button>
+                            <h2 style="margin-bottom: 20px;">Выберите основную услугу для срочного написания</h2>
+                            <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                                Срочное написание — это дополнение к основной услуге, которое ускоряет выполнение работы.
+                            </p>
+                            <div class="urgency-services-list">
+                                ${services.filter(s => s.id !== 8).map(service => `
+                                    <div class="urgency-service-item" style="background: rgba(255,255,255,0.05); padding: 20px; border-radius: var(--border-radius); margin-bottom: 15px; border: 1px solid rgba(255,255,255,0.1);">
+                                        <h4 style="color: var(--accent-color); margin-bottom: 10px;">${service.name}</h4>
+                                        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 10px;">${service.description}</p>
+                                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                                            <div class="urgency-service-price" style="font-size: 1.2rem; font-weight: 700; color: var(--accent-color);">
+                                                от ${service.price.toLocaleString()} ₽
+                                            </div>
+                                            <button class="btn btn-primary add-urgency-service" data-id="${service.id}" data-urgent="true" style="padding: 10px 20px; font-size: 0.9rem;">
+                                                Выбрать (+50%)
+                                            </button>
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                document.body.insertAdjacentHTML('beforeend', modalHTML);
+
+                // Обработчики событий
+                document.querySelector('#urgencyModal .close-modal').addEventListener('click', () => {
+                    document.getElementById('urgencyModal').remove();
+                });
+
+                document.querySelectorAll('.add-urgency-service').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        const serviceId = parseInt(btn.dataset.id);
+                        const service = services.find(s => s.id === serviceId);
+
+                        if (service) {
+                            // Добавляем основную услугу
+                            const existingItem = this.cart.find(item => item.id === serviceId && !item.params);
+
+                            if (existingItem) {
+                                existingItem.quantity += 1;
+                            } else {
+                                this.cart.push({
+                                    id: service.id,
+                                    name: service.name,
+                                    basePrice: service.price,
+                                    quantity: 1
+                                });
+                            }
+
+                            // Добавляем срочное написание
+                            const urgentService = services.find(s => s.id === 8);
+                            this.cart.push({
+                                id: urgentService.id,
+                                name: urgentService.name,
+                                basePrice: service.price * 0.5, // Доплата 50%
+                                quantity: 1,
+                                linkedService: serviceId
+                            });
+
+                            this.saveCartToStorage();
+                            this.updateCartCount();
+                            this.showNotification(`"${service.name}" с срочным написанием добавлено в корзину`);
+                            document.getElementById('urgencyModal').remove();
+
+                            if (this.isCartOpen()) {
+                                this.renderCart();
+                            }
+                        }
+                    });
+                });
+
+                document.getElementById('urgencyModal').addEventListener('click', (e) => {
+                    if (e.target === document.getElementById('urgencyModal')) {
+                        document.getElementById('urgencyModal').remove();
+                    }
+                });
+            },
+
+            // Удаление из корзины
+            removeFromCart(itemIndex) {
+                const item = this.cart[itemIndex];
+
+                // Если удаляем основную услугу, удаляем и связанное срочное написание
+                if (item && item.linkedService === undefined) {
+                    const linkedUrgentIndex = this.cart.findIndex(cartItem => 
+                        cartItem.id === 8 && cartItem.linkedService === item.id
+                    );
+                    if (linkedUrgentIndex > -1) {
+                        this.cart.splice(linkedUrgentIndex, 1);
+                    }
+                }
+
+                this.cart.splice(itemIndex, 1);
+                this.saveCartToStorage();
+                this.updateCartCount();
+                this.renderCart();
+            },
+
+            // Обновление количества
+            updateCartQuantity(itemIndex, quantity) {
+                if (quantity < 1) {
+                    this.removeFromCart(itemIndex);
+                    return;
+                }
+
+                this.cart[itemIndex].quantity = quantity;
+
+                // Обновляем связанное срочное написание
+                const item = this.cart[itemIndex];
+                if (item.id !== 8) {
+                    const linkedUrgentIndex = this.cart.findIndex(cartItem => 
+                        cartItem.id === 8 && cartItem.linkedService === item.id
+                    );
+                    if (linkedUrgentIndex > -1) {
+                        this.cart[linkedUrgentIndex].quantity = quantity;
+                    }
+                }
+
+                this.saveCartToStorage();
+                this.updateCartCount();
+                this.renderCart();
+            },
+
+            // Обновление счетчика корзины
+            updateCartCount() {
+                const count = this.cart.reduce((total, item) => total + item.quantity, 0);
+                document.getElementById('cartCount').textContent = count;
+            },
+
+            // Рендеринг корзины
+            renderCart() {
+                const cartItems = document.getElementById('cartItems');
+                const cartEmpty = document.getElementById('cartEmpty');
+                const cartSummary = document.getElementById('cartSummary');
+                const cartTotal = document.getElementById('cartTotal');
+
+                if (this.cart.length === 0) {
+                    cartItems.style.display = 'none';
+                    cartEmpty.style.display = 'block';
+                    cartSummary.style.display = 'none';
+                    return;
+                }
+
+                cartItems.style.display = 'block';
+                cartEmpty.style.display = 'none';
+                cartSummary.style.display = 'block';
+
+                // Очистка и рендеринг товаров
+                cartItems.innerHTML = '';
+                let subtotal = 0;
+
+                this.cart.forEach((item, index) => {
+                    const service = services.find(s => s.id === item.id);
+                    if (!service) return;
+
+                    // Рассчитываем цену
+                    let itemPrice = item.basePrice || service.price;
+                    let itemTotal = itemPrice * item.quantity;
+                    subtotal += itemTotal;
+
+                    const itemElement = document.createElement('div');
+                    itemElement.className = 'cart-item';
+
+                    if (item.id === 8) {
+                        // Срочное написание
+                        const mainService = this.cart.find(s => s.id === item.linkedService);
+                        const mainServiceData = services.find(s => s.id === item.linkedService);
+
+                        itemElement.innerHTML = `
+                            <div class="cart-item-header">
+                                <div class="cart-item-title">${item.name} (к "${mainServiceData ? mainServiceData.name : 'основной услуге'})</div>
+                                <div class="cart-item-price">${itemTotal.toLocaleString()} ₽</div>
+                            </div>
+                            <div class="cart-item-controls">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                                    <span class="cart-item-quantity">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-index="${index}">+</button>
+                                </div>
+                                <button class="remove-item" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <p style="color: var(--accent-color); font-size: 0.9rem; margin-top: 10px;">
+                                <i class="fas fa-info-circle"></i> Доплата за срочность: 50% от стоимости основной услуги
+                            </p>
+                        `;
+                    } else {
+                        // Обычная услуга
+                        const hasUrgent = this.cart.some(cartItem => 
+                            cartItem.id === 8 && cartItem.linkedService === item.id
+                        );
+
+                        itemElement.innerHTML = `
+                            <div class="cart-item-header">
+                                <div class="cart-item-title">${item.name}</div>
+                                <div class="cart-item-price">${itemTotal.toLocaleString()} ₽</div>
+                            </div>
+
+                            ${item.params ? `
+                                <div style="margin: 15px 0; padding: 15px; background: rgba(255,255,255,0.05); border-radius: 5px; font-size: 0.9rem;">
+                                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px;">
+                                        ${item.params.pages ? `<div><i class="fas fa-file"></i> ${item.params.pages} стр.</div>` : ''}
+                                        ${item.params.deadline ? `<div><i class="far fa-clock"></i> ${item.params.deadline === 1 ? '24 часа' : `${item.params.deadline} дней`}</div>` : ''}
+                                        ${item.params.unique ? `<div><i class="fas fa-chart-line"></i> ${item.params.unique}%</div>` : ''}
+                                        ${item.params.hasPractice ? `<div><i class="fas fa-chart-bar"></i> С практикой</div>` : ''}
+                                        ${item.params.hasPresentation ? `<div><i class="fas fa-desktop"></i> С презентацией</div>` : ''}
+                                        ${item.params.hasReview ? `<div><i class="fas fa-user-check"></i> С рецензией</div>` : ''}
+                                    </div>
+                                </div>
+                            ` : ''}
+
+                            <div class="cart-item-controls">
+                                <div class="quantity-selector">
+                                    <button class="quantity-btn minus" data-index="${index}">-</button>
+                                    <span class="cart-item-quantity">${item.quantity}</span>
+                                    <button class="quantity-btn plus" data-index="${index}">+</button>
+                                </div>
+
+                                ${!hasUrgent ? `
+                                    <button class="btn btn-secondary add-urgent" data-index="${index}" style="padding: 8px 15px; font-size: 0.9rem;">
+                                        <i class="fas fa-bolt"></i> Добавить срочность
+                                    </button>
+                                ` : ''}
+
+                                <button class="remove-item" data-index="${index}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        `;
+                    }
+
+                    cartItems.appendChild(itemElement);
+
+                    // Обработчики для кнопок
+                    itemElement.querySelectorAll('.minus, .plus').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            const itemIndex = parseInt(e.target.closest('[data-index]').dataset.index);
+                            const newQuantity = e.target.classList.contains('minus') 
+                                ? this.cart[itemIndex].quantity - 1 
+                                : this.cart[itemIndex].quantity + 1;
+                            this.updateCartQuantity(itemIndex, newQuantity);
+                        });
+                    });
+
+                    itemElement.querySelector('.remove-item').addEventListener('click', (e) => {
+                        const itemIndex = parseInt(e.target.closest('[data-index]').dataset.index);
+                        this.removeFromCart(itemIndex);
+                    });
+
+                    // Кнопка добавления срочности
+                    const addUrgentBtn = itemElement.querySelector('.add-urgent');
+                    if (addUrgentBtn) {
+                        addUrgentBtn.addEventListener('click', (e) => {
+                            const itemIndex = parseInt(e.target.closest('[data-index]').dataset.index);
+                            const item = this.cart[itemIndex];
+
+                            // Добавляем срочное написание
+                            const urgentService = services.find(s => s.id === 8);
+                            this.cart.push({
+                                id: urgentService.id,
+                                name: urgentService.name,
+                                basePrice: item.basePrice * 0.5,
+                                quantity: item.quantity,
+                                linkedService: item.id
+                            });
+
+                            this.saveCartToStorage();
+                            this.updateCartCount();
+                            this.renderCart();
+                            this.showNotification('Добавлена срочность выполнения');
+                        });
+                    }
+                });
+
+                // Применяем скидку
+                let total = subtotal;
+                if (this.discount > 0) {
+                    total = subtotal * (1 - this.discount / 100);
+                }
+
+                // Скидка за объем
+                const totalQuantity = this.cart.reduce((sum, item) => sum + item.quantity, 0);
+                if (totalQuantity >= 3) {
+                    total *= 0.9; // 10% скидка за 3 и более работ
+                    document.getElementById('discountInfo').innerHTML = `
+                        <span style="color: #48bb78;">
+                            <i class="fas fa-tag"></i> Применена скидка 10% за заказ 3+ работ
+                        </span>
+                    `;
+                }
+
+                cartTotal.textContent = Math.round(total).toLocaleString() + ' ₽';
+            },
+
+            // Проверка открыта ли корзина
+            isCartOpen() {
+                return document.getElementById('cartSidebar').classList.contains('active');
+            },
+
+            // Показать уведомление
+            showNotification(message) {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.classList.add('show');
+
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            },
+
+            // Настройка калькулятора стоимости
+            setupCalculator() {
+                const workType = document.getElementById('workType');
+                const workTypeValue = document.getElementById('workTypeValue');
+                const subject = document.getElementById('subject');
+                const subjectValue = document.getElementById('subjectValue');
+                const deadline = document.getElementById('deadline');
+                const deadlineValue = document.getElementById('deadlineValue');
+                const pages = document.getElementById('pages');
+                const pagesValue = document.getElementById('pagesValue');
+                const unique = document.getElementById('unique');
+                const uniqueValue = document.getElementById('uniqueValue');
+                const hasPractice = document.getElementById('hasPractice');
+                const hasPresentation = document.getElementById('hasPresentation');
+                const hasReview = document.getElementById('hasReview');
+                const totalPrice = document.getElementById('totalPrice');
+
+                const updateCalculator = () => {
+                    const workTypeVal = workType.value;
+                    const subjectVal = subject.value;
+                    const deadlineVal = parseInt(deadline.value);
+                    const pagesVal = parseInt(pages.value);
+                    const uniqueVal = parseInt(unique.value);
+                    const practice = hasPractice.checked;
+                    const presentation = hasPresentation.checked;
+                    const review = hasReview.checked;
+
+                    // Базовая цена за страницу в зависимости от типа работы и предмета
+                    let pricePerPage = 150; // Базовая ставка
+
+                    if (workTypeVal.includes('diploma')) pricePerPage = 250;
+                    else if (workTypeVal === 'article') pricePerPage = 600;
+                    else if (workTypeVal === 'essay') pricePerPage = 200;
+
+                    if (subjectVal === 'technical' || subjectVal === 'medical') pricePerPage *= 1.5;
+                    else if (subjectVal === 'economic') pricePerPage *= 1.3;
+                    else if (subjectVal === 'natural') pricePerPage *= 1.2;
+
+                    // Рассчитываем итоговую цену
+                    let price = pricePerPage * pagesVal;
+
+                    // Наценки
+                    if (deadlineVal <= 3) price *= 1.5; // Очень срочный
+                    else if (deadlineVal <= 7) price *= 1.3; // Срочный
+                    else if (deadlineVal <= 14) price *= 1.1; // Ускоренный
+
+                    if (uniqueVal >= 90) price *= 1.2;
+                    else if (uniqueVal >= 85) price *= 1.1;
+
+                    if (practice) price *= 1.3;
+                    if (presentation) price += 2000;
+                    if (review) price += 3000;
+
+                    // Минимальная цена
+                    if (workTypeVal === 'coursework' && price < 5000) price = 5000;
+                    if (workTypeVal.includes('diploma') && price < 15000) price = 15000;
+                    if (workTypeVal === 'article' && price < 12000) price = 12000;
+
+                    // Обновляем отображение
+                    workTypeValue.textContent = workType.options[workType.selectedIndex].text;
+                    subjectValue.textContent = subject.options[subject.selectedIndex].text;
+                    deadlineValue.textContent = deadlineVal === 1 ? '24 часа' : `${deadlineVal} дней`;
+                    pagesValue.textContent = `${pagesVal} страниц`;
+                    uniqueValue.textContent = `${uniqueVal}%`;
+                    totalPrice.textContent = Math.round(price).toLocaleString() + ' ₽';
+                };
+
+                workType.addEventListener('change', updateCalculator);
+                subject.addEventListener('change', updateCalculator);
+                deadline.addEventListener('change', updateCalculator);
+                pages.addEventListener('input', updateCalculator);
+                unique.addEventListener('input', updateCalculator);
+                hasPractice.addEventListener('change', updateCalculator);
+                hasPresentation.addEventListener('change', updateCalculator);
+                hasReview.addEventListener('change', updateCalculator);
+
+                // Инициализация
+                updateCalculator();
+            },
+
+            // Анимация статистики
+            animateStats() {
+                const statNumbers = document.querySelectorAll('.stat-number');
+
+                statNumbers.forEach(stat => {
+                    const target = parseInt(stat.getAttribute('data-target'));
+                    const increment = target / 100;
+                    let current = 0;
+
+                    const timer = setInterval(() => {
+                        current += increment;
+                        stat.textContent = Math.floor(current);
+
+                        if (current >= target) {
+                            stat.textContent = target;
+                            clearInterval(timer);
+                        }
+                    }, 20);
+                });
+            },
+
+            // Эффекты при скролле
+            setupScrollEffects() {
+                const header = document.getElementById('header');
+
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('scrolled');
+                    } else {
+                        header.classList.remove('scrolled');
+                    }
+                });
+            },
+
+            // Таймер срочного заказа
+            startUrgentTimer() {
+                const timerElement = document.getElementById('urgentTimer');
+
+                const updateTimer = () => {
+                    const now = new Date();
+                    const tomorrow = new Date();
+                    tomorrow.setDate(tomorrow.getDate() + 1);
+                    tomorrow.setHours(0, 0, 0, 0);
+
+                    const diff = tomorrow - now;
+
+                    const hours = Math.floor(diff / (1000 * 60 * 60));
+                    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                    timerElement.textContent = 
+                        `${hours.toString().padStart(2, '0')}:` +
+                        `${minutes.toString().padStart(2, '0')}:` +
+                        `${seconds.toString().padStart(2, '0')}`;
+                };
+
+                updateTimer();
+                this.urgentTimer = setInterval(updateTimer, 1000);
+            },
+
+            // Настройка загрузки файлов
+            setupFileUpload() {
+                const fileUpload = document.getElementById('fileUpload');
+                const fileInput = document.getElementById('requirementsFile');
+                const fileName = document.getElementById('fileName');
+
+                fileUpload.addEventListener('click', () => {
+                    fileInput.click();
+                });
+
+                fileInput.addEventListener('change', (e) => {
+                    if (e.target.files.length > 0) {
+                        const file = e.target.files[0];
+                        fileName.innerHTML = `
+                            <span style="color: var(--accent-color);">
+                                <i class="fas fa-file"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)
+                            </span>
+                            <button type="button" onclick="document.getElementById('requirementsFile').value = ''; document.getElementById('fileName').innerHTML = '';" 
+                                    style="background: none; border: none; color: #ff6b6b; margin-left: 10px; cursor: pointer;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                    }
+                });
+
+                // Drag and drop
+                fileUpload.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    fileUpload.style.borderColor = 'var(--accent-color)';
+                    fileUpload.style.background = 'rgba(255, 215, 0, 0.1)';
+                });
+
+                fileUpload.addEventListener('dragleave', () => {
+                    fileUpload.style.borderColor = '';
+                    fileUpload.style.background = '';
+                });
+
+                fileUpload.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    fileUpload.style.borderColor = '';
+                    fileUpload.style.background = '';
+
+                    if (e.dataTransfer.files.length > 0) {
+                        fileInput.files = e.dataTransfer.files;
+                        const file = e.dataTransfer.files[0];
+                        fileName.innerHTML = `
+                            <span style="color: var(--accent-color);">
+                                <i class="fas fa-file"></i> ${file.name} (${(file.size / 1024).toFixed(1)} KB)
+                            </span>
+                            <button type="button" onclick="document.getElementById('requirementsFile').value = ''; document.getElementById('fileName').innerHTML = '';" 
+                                    style="background: none; border: none; color: #ff6b6b; margin-left: 10px; cursor: pointer;">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        `;
+                    }
+                });
+            },
+
+            // Настройка обработчиков событий
+            setupEventListeners() {
+                // Срочный заказ
+                document.getElementById('urgentOrder').addEventListener('click', () => {
+                    this.showNotification('Срочный заказ: оформите заявку до конца дня для получения работы завтра!');
+                });
+
+                // Скачать пример
+                document.getElementById('downloadSample').addEventListener('click', () => {
+                    this.showNotification('Пример работы отправлен на вашу электронную почту');
+                    // В реальном приложении здесь был бы fetch запрос для отправки файла
+                });
+
+                // Мобильное меню
+                document.getElementById('menuToggle').addEventListener('click', () => {
+                    document.getElementById('mobileMenu').classList.add('active');
+                });
+
+                document.getElementById('closeMenu').addEventListener('click', () => {
+                    document.getElementById('mobileMenu').classList.remove('active');
+                });
+
+                // Корзина
+                document.getElementById('cartToggle').addEventListener('click', () => {
+                    this.renderCart();
+                    document.getElementById('cartSidebar').classList.add('active');
+                });
+
+                document.getElementById('mobileCartBtn').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.renderCart();
+                    document.getElementById('cartSidebar').classList.add('active');
+                    document.getElementById('mobileMenu').classList.remove('active');
+                });
+
+                document.getElementById('closeCart').addEventListener('click', () => {
+                    document.getElementById('cartSidebar').classList.remove('active');
+                });
+
+                // Фильтры услуг
+                document.querySelectorAll('#services .filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('#services .filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.currentServiceFilter = btn.dataset.filter;
+                        this.renderServices();
+                    });
+                });
+
+                // Фильтры портфолио
+                document.querySelectorAll('#portfolio .filter-btn').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        document.querySelectorAll('#portfolio .filter-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        this.currentPortfolioFilter = btn.dataset.filter;
+                        this.renderPortfolio();
+                    });
+                });
+
+                // Промокоды
+                document.getElementById('applyPromo').addEventListener('click', () => {
+                    const promoCode = document.getElementById('promoCode').value.toUpperCase();
+
+                    if (promoCodes[promoCode]) {
+                        this.appliedPromo = promoCode;
+                        this.discount = promoCodes[promoCode].discount;
+                        this.renderCart();
+                        document.getElementById('discountInfo').innerHTML = `
+                            <span style="color: #48bb78;">
+                                <i class="fas fa-check-circle"></i> Промокод "${promoCode}" применен: ${promoCodes[promoCode].description}
+                            </span>
+                        `;
+                        this.showNotification(`Промокод "${promoCode}" применен! Скидка ${this.discount}%`);
+                    } else {
+                        document.getElementById('discountInfo').innerHTML = `
+                            <span style="color: #ff6b6b;">
+                                <i class="fas fa-times-circle"></i> Неверный промокод
+                            </span>
+                        `;
+                        this.showNotification('Неверный промокод');
+                    }
+                });
+
+                // Форма корзины
+                document.getElementById('cartForm').addEventListener('submit', (e) => {
+                    e.preventDefault();
+
+                    const name = document.getElementById('clientName').value;
+                    const email = document.getElementById('clientEmail').value;
+                    const phone = document.getElementById('clientPhone').value;
+                    const university = document.getElementById('clientUniversity').value;
+                    const speciality = document.getElementById('clientSpeciality').value;
+                    const topic = document.getElementById('workTopic').value;
+                    const subject = document.getElementById('workSubject').value;
+                    const deadline = document.getElementById('workDeadline').value;
+                    const message = document.getElementById('clientMessage').value;
+                    const file = document.getElementById('requirementsFile').files[0];
+
+                    // Здесь должна быть отправка на сервер
+                    console.log('Заявка отправлена:', { 
+                        name, email, phone, university, speciality, topic, subject, deadline, message,
+                        cart: this.cart,
+                        total: this.calculateCartTotal(),
+                        promo: this.appliedPromo,
+                        discount: this.discount
+                    });
+
+                    this.showNotification('Заявка оформлена! Я свяжусь с вами в течение 30 минут.');
+                    this.cart = [];
+                    this.appliedPromo = null;
+                    this.discount = 0;
+                    this.saveCartToStorage();
+                    this.updateCartCount();
+                    this.renderCart();
+                    e.target.reset();
+                    document.getElementById('fileName').innerHTML = '';
+                    document.getElementById('discountInfo').innerHTML = '';
+                    document.getElementById('cartSidebar').classList.remove('active');
+                });
+
+                // Навигация
+                document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        const targetId = link.getAttribute('href');
+                        const targetElement = document.querySelector(targetId);
+
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+
+                        // Обновление активной ссылки
+                        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(l => {
+                            l.classList.remove('active');
+                        });
+                        link.classList.add('active');
+
+                        // Закрытие мобильного меню
+                        document.getElementById('mobileMenu').classList.remove('active');
+                    });
+                });
+
+                // Закрытие корзины при клике вне
+                document.addEventListener('click', (e) => {
+                    const cartSidebar = document.getElementById('cartSidebar');
+                    if (!cartSidebar.contains(e.target) && 
+                        !e.target.closest('#cartToggle') && 
+                        !e.target.closest('#mobileCartBtn') &&
+                        cartSidebar.classList.contains('active')) {
+                        cartSidebar.classList.remove('active');
+                    }
+                });
+            },
+
+            // Расчет общей стоимости корзины
+            calculateCartTotal() {
+                return this.cart.reduce((total, item) => {
+                    return total + (item.basePrice || 0) * item.quantity;
+                }, 0);
+            }
+        };
+
+        // Инициализация при загрузке страницы
+        document.addEventListener('DOMContentLoaded', () => {
+            AcademicWriterApp.init();
+        });
+    </script>
+</body>
+</html>
