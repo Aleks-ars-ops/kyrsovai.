@@ -98,16 +98,21 @@
             transform: translateY(-3px);
         }
 
+        .btn-urgent {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e8e);
+            color: white;
+        }
+
         /* Шапка */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            background: rgba(10, 37, 78, 0.95);
+            background: rgba(10, 37, 78, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
-            padding: 15px 0;
+            padding: 12px 0;
             border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
@@ -116,7 +121,7 @@
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 15px;
+            gap: 20px;
         }
 
         .logo {
@@ -163,6 +168,32 @@
             color: #ffd700;
         }
 
+        /* Правая часть шапки — телефон и кнопка */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-phone {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 8px 16px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .header-phone i {
+            color: #ffd700;
+        }
+
+        .header-phone span {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
         .cart-btn {
             background: none;
             border: none;
@@ -195,7 +226,7 @@
 
         /* Герой */
         .hero {
-            padding-top: 130px;
+            padding-top: 140px;
             background: linear-gradient(135deg, #0a254e, #1a365d);
         }
 
@@ -220,27 +251,41 @@
             margin-bottom: 20px;
         }
 
+        /* Статистика крупная и красивая */
         .stats {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 20px;
+            gap: 25px;
             margin: 40px 0;
         }
 
         .stat-card {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.08);
+            padding: 25px 15px;
+            border-radius: 20px;
             text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.2);
+            border: 1px solid rgba(255, 215, 0, 0.25);
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: #ffd700;
+            background: rgba(255, 215, 0, 0.05);
         }
 
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 800;
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #cbd5e0;
+            margin-top: 5px;
         }
 
         .guarantees {
@@ -281,7 +326,7 @@
         }
 
         .service-card {
-            background: #1a365d;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 25px;
             transition: 0.3s;
@@ -322,7 +367,6 @@
 
         .service-features i {
             font-size: 0.9rem;
-            color: #ffd700;
             width: 20px;
         }
 
@@ -384,7 +428,7 @@
         }
 
         .portfolio-card {
-            background: #1a365d;
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 20px;
             padding: 25px;
             text-align: center;
@@ -565,6 +609,12 @@
             .stats, .guarantees {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .header-right {
+                gap: 10px;
+            }
+            .header-phone span {
+                display: none;
+            }
         }
 
         @media (max-width: 576px) {
@@ -597,8 +647,15 @@
             <li><a href="#reviews">Отзывы</a></li>
             <li><a href="#contact">Контакты</a></li>
         </ul>
-        <div class="header-actions">
-            <button class="cart-btn" id="cartToggle"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></button>
+        <div class="header-right">
+            <div class="header-phone">
+                <i class="fas fa-phone-alt"></i>
+                <span>+7 (999) 123-45-67</span>
+            </div>
+            <button class="cart-btn" id="cartToggle">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="cart-badge" id="cartCount">0</span>
+            </button>
             <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
         </div>
     </div>
@@ -613,10 +670,10 @@
                 <p>Профессиональный автор с 10-летним опытом. Пишу курсовые, дипломные, статьи по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам.</p>
                 
                 <div class="stats">
-                    <div class="stat-card"><div class="stat-number">10 лет</div><div>опыта</div></div>
-                    <div class="stat-card"><div class="stat-number">520+</div><div>работ</div></div>
-                    <div class="stat-card"><div class="stat-number">98%</div><div>уникальность</div></div>
-                    <div class="stat-card"><div class="stat-number">185+</div><div>клиентов</div></div>
+                    <div class="stat-card"><div class="stat-number">10 лет</div><div class="stat-label">опыта</div></div>
+                    <div class="stat-card"><div class="stat-number">520+</div><div class="stat-label">выполненных работ</div></div>
+                    <div class="stat-card"><div class="stat-number">98%</div><div class="stat-label">уникальность</div></div>
+                    <div class="stat-card"><div class="stat-number">185+</div><div class="stat-label">постоянных клиентов</div></div>
                 </div>
 
                 <div class="guarantees">
@@ -666,7 +723,7 @@
 <section class="reviews" id="reviews">
     <div class="container">
         <div class="section-header"><h2>Отзывы клиентов</h2></div>
-        <div style="max-width:800px; margin:0 auto; background:#1a365d; padding:30px; border-radius:20px; text-align:center;">
+        <div style="max-width:800px; margin:0 auto; background:rgba(255,255,255,0.05); padding:30px; border-radius:20px; text-align:center;">
             <p style="font-style:italic;">"Заказывала дипломную работу по экономике. Юлия выполнила досрочно, уникальность 92%. Защитила на отлично! Рекомендую всем, кто ценит качество и профессионализм."</p>
             <div style="margin-top:20px;"><img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:60px; height:60px; border-radius:50%;"><h4>Анна Смирнова</h4><p>МГУ, экономический факультет</p></div>
         </div>
