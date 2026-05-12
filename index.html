@@ -5,103 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
     <title>Юлия — Автор курсовых и дипломных работ</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Open+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* Базовые стили и переменные */
-        :root {
-            --primary-dark: #0a254e;
-            --secondary-dark: #1a365d;
-            --accent-color: #ffd700;
-            --accent-light: #fff8dc;
-            --text-primary: #ffffff;
-            --text-secondary: #cbd5e0;
-            --card-bg: #1a365d;
-            --card-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --border-radius: 12px;
-            --container-width: 1400px;
-            --gold-gradient: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
-            --blue-gradient: linear-gradient(135deg, #0a254e 0%, #1a365d 100%);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 100px;
+        :root {
+            --primary-dark: #0a254e;
+            --secondary-dark: #1a365d;
+            --accent: #ffd700;
+            --accent-light: #fff8dc;
+            --text-white: #ffffff;
+            --text-gray: #cbd5e0;
+            --card-bg: #1a365d;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --radius: 16px;
+            --transition: all 0.3s ease;
         }
 
         body {
             font-family: 'Open Sans', sans-serif;
+            background: var(--primary-dark);
+            color: var(--text-white);
             line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--primary-dark);
-            transition: var(--transition);
-            overflow-x: hidden;
         }
 
         .container {
-            max-width: var(--container-width);
+            max-width: 1300px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
         section {
-            padding: 80px 0;
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 60px 0;
-            }
+            padding: 70px 0;
         }
 
         h1, h2, h3, h4 {
             font-family: 'Merriweather', serif;
             font-weight: 700;
-            line-height: 1.2;
-        }
-
-        h1 {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
         }
 
         h2 {
-            font-size: clamp(1.8rem, 4vw, 2.8rem);
-            margin-bottom: 30px;
+            font-size: 2.2rem;
+            margin-bottom: 20px;
             position: relative;
             display: inline-block;
         }
 
-        h2::after {
+        h2:after {
             content: '';
             position: absolute;
-            bottom: -15px;
+            bottom: -12px;
             left: 0;
-            width: 80px;
+            width: 70px;
             height: 3px;
-            background: var(--gold-gradient);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             border-radius: 3px;
         }
 
-        h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
+        .section-header {
+            text-align: center;
+            margin-bottom: 50px;
         }
 
-        p {
-            margin-bottom: 1.5rem;
-            color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.7;
+        .section-header h2:after {
+            left: 50%;
+            transform: translateX(-50%);
         }
 
         .btn {
@@ -109,59 +81,51 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            padding: 14px 28px;
+            padding: 12px 28px;
             border-radius: 40px;
-            font-size: 1rem;
             font-weight: 600;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
             transition: var(--transition);
-            font-family: 'Open Sans', sans-serif;
-            letter-spacing: 0.5px;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
         }
 
         .btn-primary {
-            background: var(--gold-gradient);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             color: var(--primary-dark);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 215, 0, 0.3);
+            box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
         .btn-secondary {
-            background-color: transparent;
-            color: var(--accent-color);
-            border: 2px solid var(--accent-color);
+            background: transparent;
+            border: 2px solid var(--accent);
+            color: var(--accent);
         }
 
         .btn-secondary:hover {
-            background-color: rgba(255, 215, 0, 0.1);
+            background: rgba(255, 215, 0, 0.1);
             transform: translateY(-3px);
         }
 
-        /* Шапка сайта */
+        /* Шапка */
         .header {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
-            z-index: 1000;
-            background-color: rgba(10, 37, 78, 0.95);
+            background: rgba(10, 37, 78, 0.95);
             backdrop-filter: blur(10px);
+            z-index: 1000;
             padding: 15px 0;
-            transition: var(--transition);
-            border-bottom: 1px solid rgba(255, 215, 0, 0.1);
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
-        .header.scrolled {
-            padding: 10px 0;
-            background-color: rgba(10, 37, 78, 0.98);
-        }
-
-        .header-inner {
+        .header .container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -179,20 +143,19 @@
         .logo-icon {
             width: 45px;
             height: 45px;
-            background: var(--gold-gradient);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: var(--primary-dark);
         }
 
         .logo-text {
-            font-family: 'Merriweather', serif;
-            font-size: 1.8rem;
-            font-weight: 700;
-            background: var(--gold-gradient);
+            font-size: 1.6rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -201,71 +164,37 @@
             display: flex;
             list-style: none;
             gap: 30px;
-            flex-wrap: wrap;
         }
 
-        .nav-link {
-            color: var(--text-primary);
+        .nav-menu a {
+            color: var(--text-white);
             text-decoration: none;
             font-weight: 600;
-            font-size: 0.95rem;
-            transition: var(--transition);
-            padding: 8px 0;
-            position: relative;
-        }
-
-        .nav-link::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gold-gradient);
             transition: var(--transition);
         }
 
-        .nav-link:hover::before,
-        .nav-link.active::before {
-            width: 100%;
-        }
-
-        .nav-link:hover,
-        .nav-link.active {
-            color: var(--accent-color);
-        }
-
-        .header-actions {
-            display: flex;
-            align-items: center;
-            gap: 15px;
+        .nav-menu a:hover {
+            color: var(--accent);
         }
 
         .cart-btn {
             background: none;
             border: none;
-            color: var(--text-primary);
-            font-size: 1.4rem;
+            color: var(--text-white);
+            font-size: 1.3rem;
             cursor: pointer;
             position: relative;
-            transition: var(--transition);
-        }
-
-        .cart-btn:hover {
-            color: var(--accent-color);
         }
 
         .cart-badge {
             position: absolute;
             top: -10px;
             right: -12px;
-            background: var(--gold-gradient);
+            background: var(--accent);
             color: var(--primary-dark);
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 20px;
-            min-width: 22px;
-            text-align: center;
             font-weight: 700;
         }
 
@@ -273,121 +202,90 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-primary);
+            color: var(--text-white);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
-        /* Герой секция */
+        /* Герой */
         .hero {
-            padding-top: 140px;
-            min-height: 90vh;
-            display: flex;
+            padding-top: 130px;
+            background: linear-gradient(135deg, #0a254e 0%, #1a365d 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
             align-items: center;
-            background: var(--blue-gradient);
         }
 
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-stats {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 40px;
-            margin: 40px 0;
-        }
-
-        .stat-item {
-            text-align: center;
-            min-width: 100px;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: var(--gold-gradient);
+        .hero-title {
+            font-size: 2.8rem;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: block;
-            line-height: 1;
+            margin-bottom: 15px;
         }
 
-        .stat-label {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 8px;
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
         }
 
-        .guarantees {
+        .stats {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             margin: 40px 0;
         }
 
-        .guarantee-item {
+        .stat-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
+            text-align: center;
             border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .guarantees {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin: 40px 0;
+        }
+
+        .guarantee-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
+            border-radius: var(--radius);
             text-align: center;
         }
 
-        .guarantee-icon {
+        .guarantee-card i {
             font-size: 2rem;
-            color: var(--accent-color);
-            margin-bottom: 15px;
+            color: var(--accent);
+            margin-bottom: 10px;
         }
 
         .hero-actions {
             display: flex;
-            flex-wrap: wrap;
             gap: 15px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
 
         /* Услуги */
-        .services, .portfolio, .reviews {
-            background-color: var(--secondary-dark);
-        }
-
-        .services-header, .portfolio-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .services-header h2::after, .portfolio-header h2::after {
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .services-filters, .portfolio-filters {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 12px;
-            margin-top: 30px;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            background: transparent;
-            border: 1px solid rgba(255, 215, 0, 0.3);
-            border-radius: 30px;
-            color: var(--text-primary);
-            cursor: pointer;
-            transition: var(--transition);
-            font-size: 0.85rem;
-        }
-
-        .filter-btn.active,
-        .filter-btn:hover {
-            background: var(--gold-gradient);
-            color: var(--primary-dark);
-            border-color: transparent;
+        .services {
+            background: var(--secondary-dark);
         }
 
         .services-grid {
@@ -397,29 +295,28 @@
         }
 
         .service-card {
-            background-color: var(--card-bg);
-            border-radius: var(--border-radius);
+            background: var(--card-bg);
+            border-radius: var(--radius);
             padding: 25px;
             transition: var(--transition);
             border: 1px solid rgba(255, 215, 0, 0.1);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-color);
-            box-shadow: var(--card-shadow);
+            transform: translateY(-5px);
+            border-color: var(--accent);
         }
 
         .service-icon {
             font-size: 2.5rem;
-            color: var(--accent-color);
+            color: var(--accent);
             margin-bottom: 15px;
         }
 
         .service-price {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: 700;
-            color: var(--accent-color);
+            color: var(--accent);
             margin: 15px 0;
         }
 
@@ -434,42 +331,24 @@
             gap: 10px;
             margin-bottom: 10px;
             font-size: 0.9rem;
-            color: var(--text-secondary);
+            color: var(--text-gray);
         }
 
         .service-features i {
-            color: var(--accent-color);
+            color: var(--accent);
             width: 20px;
-        }
-
-        .service-actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 20px;
-        }
-
-        .service-actions .btn {
-            flex: 1;
-            padding: 10px 15px;
-            font-size: 0.85rem;
         }
 
         /* Калькулятор */
         .calculator {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
             padding: 30px;
             margin-top: 50px;
             border: 1px solid rgba(255, 215, 0, 0.2);
         }
 
-        .calculator h3 {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .calculator-controls {
+        .calculator-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 20px;
@@ -482,37 +361,63 @@
             gap: 8px;
         }
 
-        .calc-label {
-            display: flex;
-            justify-content: space-between;
-            color: var(--text-secondary);
+        .calc-group label {
+            color: var(--text-gray);
             font-size: 0.9rem;
         }
 
-        select, input[type="range"], input[type="text"], input[type="email"], input[type="tel"], input[type="date"], textarea {
-            width: 100%;
+        select, input {
             padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 8px;
-            color: var(--text-primary);
-            font-family: 'Open Sans', sans-serif;
-            font-size: 0.9rem;
+            border-radius: 10px;
+            color: var(--text-white);
         }
 
         .calc-total {
             text-align: center;
             padding: 25px;
             background: rgba(255, 215, 0, 0.05);
-            border-radius: var(--border-radius);
+            border-radius: var(--radius);
         }
 
         .total-price {
-            font-size: 2.5rem;
+            font-size: 2.2rem;
             font-weight: 800;
-            background: var(--gold-gradient);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        /* Портфолио */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        .portfolio-card i {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .grade {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--primary-dark);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 700;
+            margin-top: 10px;
         }
 
         /* Корзина */
@@ -521,14 +426,13 @@
             top: 0;
             right: -100%;
             width: 100%;
-            max-width: 500px;
+            max-width: 450px;
             height: 100vh;
             background: var(--card-bg);
             z-index: 1100;
             transition: 0.3s;
             padding: 20px;
             overflow-y: auto;
-            box-shadow: -5px 0 30px rgba(0,0,0,0.5);
         }
 
         .cart-sidebar.active {
@@ -540,25 +444,20 @@
             justify-content: space-between;
             align-items: center;
             padding-bottom: 15px;
-            border-bottom: 1px solid rgba(255,215,0,0.2);
-            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         .close-cart {
             background: none;
             border: none;
-            color: var(--text-primary);
+            color: var(--text-white);
             font-size: 1.5rem;
             cursor: pointer;
         }
 
-        .cart-items {
-            margin-bottom: 20px;
-        }
-
         .cart-item {
-            background: rgba(255,255,255,0.05);
-            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: var(--radius);
             padding: 15px;
             margin-bottom: 15px;
         }
@@ -566,45 +465,7 @@
         .cart-item-header {
             display: flex;
             justify-content: space-between;
-            align-items: flex-start;
-            flex-wrap: wrap;
-            gap: 10px;
             margin-bottom: 10px;
-        }
-
-        .cart-item-title {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-
-        .cart-item-price {
-            font-weight: 700;
-            color: var(--accent-color);
-        }
-
-        .cart-item-controls {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            margin-top: 10px;
-        }
-
-        .quantity-btn {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            cursor: pointer;
-        }
-
-        .remove-item {
-            background: none;
-            border: none;
-            color: #ff6b6b;
-            cursor: pointer;
-            margin-left: auto;
         }
 
         .cart-total {
@@ -614,113 +475,44 @@
             font-weight: 700;
             margin: 20px 0;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,215,0,0.2);
-        }
-
-        .cart-form {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        @media (max-width: 600px) {
-            .form-row {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .cart-empty {
-            text-align: center;
-            padding: 50px 20px;
-            color: var(--text-secondary);
-        }
-
-        /* Отзывы */
-        .reviews-slider {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .review-item {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            text-align: center;
-        }
-
-        .review-text {
-            font-style: italic;
-            font-size: 1rem;
-            line-height: 1.6;
-        }
-
-        .review-author {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            object-fit: cover;
+            border-top: 1px solid rgba(255, 215, 0, 0.2);
         }
 
         /* Футер */
         .footer {
             background: var(--primary-dark);
             padding: 50px 0 20px;
-            border-top: 1px solid rgba(255,215,0,0.1);
+            border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
 
-        .footer-content {
+        .footer-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 40px;
             margin-bottom: 30px;
         }
 
-        .footer-links h3 {
+        .footer h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            color: var(--accent-color);
+            color: var(--accent);
         }
 
-        .footer-links ul {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-
-        .footer-links a {
-            color: var(--text-secondary);
+        .footer a {
+            color: var(--text-gray);
             text-decoration: none;
             transition: 0.3s;
         }
 
-        .footer-links a:hover {
-            color: var(--accent-color);
-            padding-left: 5px;
+        .footer a:hover {
+            color: var(--accent);
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 15px;
-            color: var(--text-secondary);
+            margin-bottom: 12px;
         }
 
         .social-links {
@@ -730,47 +522,36 @@
         }
 
         .social-link {
-            width: 40px;
-            height: 40px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 215, 0, 0.1);
             border-radius: 50%;
-            background: rgba(255,215,0,0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: 0.3s;
-        }
-
-        .social-link:hover {
-            background: var(--gold-gradient);
-            color: var(--primary-dark);
+            color: var(--accent);
         }
 
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255,255,255,0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
             font-size: 0.8rem;
-            color: var(--text-secondary);
         }
 
-        /* Уведомления */
+        /* Уведомление */
         .notification {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            left: 20px;
-            max-width: 400px;
-            background: var(--gold-gradient);
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
             color: var(--primary-dark);
-            padding: 12px 20px;
+            padding: 12px 24px;
             border-radius: 50px;
             font-weight: 600;
-            z-index: 2000;
+            z-index: 1200;
             transform: translateX(200%);
             transition: 0.3s;
-            margin: 0 auto;
         }
 
         .notification.show {
@@ -785,22 +566,22 @@
             .menu-toggle {
                 display: block;
             }
-            .header-inner {
-                justify-content: space-between;
+            .hero-grid {
+                grid-template-columns: 1fr;
+            }
+            .stats, .guarantees {
+                grid-template-columns: repeat(2, 1fr);
             }
         }
 
         @media (max-width: 576px) {
-            .hero-stats {
-                justify-content: center;
+            .stats, .guarantees {
+                grid-template-columns: 1fr;
             }
-            .hero-actions .btn {
-                width: 100%;
-            }
-            .service-actions {
+            .hero-actions {
                 flex-direction: column;
             }
-            .service-actions .btn {
+            .btn {
                 width: 100%;
             }
         }
@@ -808,185 +589,186 @@
 </head>
 <body>
 
-<div class="notification" id="notification"></div>
+<div class="notification" id="notification">✅ Добавлено в корзину</div>
 
-<header class="header" id="header">
+<header class="header">
     <div class="container">
-        <div class="header-inner">
-            <a href="#home" class="logo">
-                <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
-                <span class="logo-text">Юлия</span>
-            </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="#home" class="nav-link active">Главная</a></li>
-                    <li><a href="#portfolio" class="nav-link">Примеры работ</a></li>
-                    <li><a href="#services" class="nav-link">Услуги</a></li>
-                    <li><a href="#reviews" class="nav-link">Отзывы</a></li>
-                    <li><a href="#contact" class="nav-link">Контакты</a></li>
-                </ul>
-            </nav>
-            <div class="header-actions">
-                <button class="cart-btn" id="cartToggle">
-                    <i class="fas fa-shopping-cart"></i>
-                    <span class="cart-badge" id="cartCount">0</span>
-                </button>
-                <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-            </div>
+        <a href="#" class="logo">
+            <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
+            <span class="logo-text">Юлия</span>
+        </a>
+        <nav>
+            <ul class="nav-menu">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#portfolio">Портфолио</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button class="cart-btn" id="cartToggle"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></button>
+            <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
         </div>
     </div>
 </header>
 
-<section class="hero" id="home">
-    <div class="container">
-        <div class="hero-content">
-            <h1>Юлия</h1>
-            <h2 style="font-size: 1.8rem;">Автор курсовых и дипломных работ</h2>
-            <p style="font-size: 1.1rem;">Профессиональный автор академических работ с 10-летним опытом. Специализируюсь на написании курсовых, дипломных работ, научных статей по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам. Гарантирую качество, уникальность и соблюдение сроков.</p>
+<main>
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-grid">
+                <div>
+                    <h1 class="hero-title">Юлия</h1>
+                    <h2 class="hero-subtitle">Автор курсовых и дипломных работ</h2>
+                    <p>Профессиональный автор академических работ с 10-летним опытом. Специализируюсь на написании курсовых, дипломных работ, научных статей по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам. Гарантирую качество, уникальность и соблюдение сроков.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-card"><span class="stat-number">10 лет</span><div>опыта</div></div>
+                        <div class="stat-card"><span class="stat-number">520</span><div>работ</div></div>
+                        <div class="stat-card"><span class="stat-number">98%</span><div>уникальность</div></div>
+                        <div class="stat-card"><span class="stat-number">185</span><div>клиентов</div></div>
+                    </div>
 
-            <div class="hero-stats">
-                <div class="stat-item"><span class="stat-number" data-target="10">0</span><span class="stat-label">лет опыта</span></div>
-                <div class="stat-item"><span class="stat-number" data-target="520">0</span><span class="stat-label">выполненных работ</span></div>
-                <div class="stat-item"><span class="stat-number" data-target="98">0</span><span class="stat-label">уникальность %</span></div>
-                <div class="stat-item"><span class="stat-number" data-target="185">0</span><span class="stat-label">постоянных клиентов</span></div>
+                    <div class="guarantees">
+                        <div class="guarantee-card"><i class="fas fa-check-double"></i><h4>100% уникальность</h4><p>Проверка в Antiplagiat</p></div>
+                        <div class="guarantee-card"><i class="fas fa-lock"></i><h4>Конфиденциальность</h4><p>Данные защищены</p></div>
+                        <div class="guarantee-card"><i class="fas fa-clock"></i><h4>Соблюдение сроков</h4><p>Точно вовремя</p></div>
+                        <div class="guarantee-card"><i class="fas fa-sync-alt"></i><h4>Бесплатные доработки</h4><p>Исправления бесплатно</p></div>
+                    </div>
+
+                    <div class="hero-actions">
+                        <a href="#services" class="btn btn-primary">Заказать работу</a>
+                        <a href="#contact" class="btn btn-secondary">Консультация</a>
+                    </div>
+                </div>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Автор" style="width:100%; border-radius:30px;">
+                </div>
             </div>
+        </div>
+    </section>
 
-            <div class="guarantees">
-                <div class="guarantee-item"><div class="guard-icon"><i class="fas fa-check-double"></i></div><h3>100% уникальность</h3><p>Проверка в Antiplagiat.ru</p></div>
-                <div class="guarantee-item"><div class="guard-icon"><i class="fas fa-lock"></i></div><h3>Конфиденциальность</h3><p>Ваши данные защищены</p></div>
-                <div class="guarantee-item"><div class="guard-icon"><i class="fas fa-clock"></i></div><h3>Соблюдение сроков</h3><p>Сдаем точно вовремя</p></div>
-                <div class="guarantee-item"><div class="guard-icon"><i class="fas fa-sync-alt"></i></div><h3>Бесплатные доработки</h3><p>Исправления бесплатно</p></div>
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header"><h2>Услуги и цены</h2><p>Профессиональное написание академических работ</p></div>
+            <div class="services-grid" id="servicesGrid"></div>
+
+            <div class="calculator">
+                <h3 style="text-align:center; margin-bottom:20px;">Калькулятор стоимости</h3>
+                <div class="calculator-grid">
+                    <div class="calc-group"><label>Тип работы</label><select id="calcType"><option value="coursework">Курсовая работа</option><option value="diploma_bachelor">Диплом (бакалавр)</option><option value="diploma_master">Диплом (магистр)</option><option value="article">Научная статья</option></select></div>
+                    <div class="calc-group"><label>Предмет</label><select id="calcSubject"><option value="humanitarian">Гуманитарные</option><option value="economic">Экономические</option><option value="technical">Технические</option></select></div>
+                    <div class="calc-group"><label>Страниц: <span id="pagesVal">30</span></label><input type="range" id="calcPages" min="20" max="100" value="30" step="5"></div>
+                    <div class="calc-group"><label>Уникальность: <span id="uniqueVal">80</span>%</label><input type="range" id="calcUnique" min="70" max="95" value="80" step="5"></div>
+                </div>
+                <div class="calc-total"><h4>Примерная стоимость</h4><div class="total-price" id="calcTotal">6 500 ₽</div><p>Точная стоимость после получения требований</p></div>
             </div>
+        </div>
+    </section>
 
-            <div class="hero-actions">
-                <a href="#services" class="btn btn-primary">Заказать работу</a>
-                <a href="#contact" class="btn btn-secondary">Бесплатная консультация</a>
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <div class="section-header"><h2>Примеры работ</h2><p>Реальные работы студентов</p></div>
+            <div class="portfolio-grid" id="portfolioGrid"></div>
+        </div>
+    </section>
+
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header"><h2>Отзывы клиентов</h2></div>
+            <div style="max-width:800px; margin:0 auto; background:var(--card-bg); padding:30px; border-radius:var(--radius); text-align:center;">
+                <p style="font-style:italic;">"Заказывала дипломную работу по экономике. Юлия выполнила работу досрочно, уникальность 92%. Защитила на отлично! Рекомендую всем, кто ценит качество."</p>
+                <div style="margin-top:20px;"><img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:60px; height:60px; border-radius:50%;"><h4>Анна Смирнова</h4><p>МГУ, экономический факультет</p></div>
             </div>
         </div>
-    </div>
-</section>
-
-<section class="portfolio" id="portfolio">
-    <div class="container">
-        <div class="portfolio-header">
-            <h2>Примеры работ</h2>
-            <p>Реальные работы, выполненные для студентов различных вузов</p>
-        </div>
-        <div class="portfolio-grid" id="portfolioGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); gap:25px;"></div>
-    </div>
-</section>
-
-<section class="services" id="services">
-    <div class="container">
-        <div class="services-header">
-            <h2>Услуги и цены</h2>
-            <p>Профессиональное написание академических работ с гарантией качества</p>
-        </div>
-        <div class="services-grid" id="servicesGrid"></div>
-
-        <div class="calculator">
-            <h3>Калькулятор стоимости</h3>
-            <div class="calculator-controls">
-                <div class="calc-group"><label class="calc-label">Тип работы</label><select id="calcType"><option value="coursework">Курсовая работа</option><option value="diploma_bachelor">Диплом (бакалавр)</option><option value="diploma_master">Диплом (магистр)</option><option value="article">Научная статья</option></select></div>
-                <div class="calc-group"><label class="calc-label">Предмет</label><select id="calcSubject"><option value="humanitarian">Гуманитарные</option><option value="economic">Экономические</option><option value="technical">Технические</option></select></div>
-                <div class="calc-group"><label class="calc-label">Страниц: <span id="calcPagesVal">30</span></label><input type="range" id="calcPages" min="20" max="100" value="30" step="5"></div>
-                <div class="calc-group"><label class="calc-label">Уникальность: <span id="calcUniqueVal">80</span>%</label><input type="range" id="calcUnique" min="70" max="95" value="80" step="5"></div>
-            </div>
-            <div class="calc-total"><h4>Примерная стоимость</h4><div class="total-price" id="calcTotalPrice">6 500 ₽</div><p>Точная стоимость после получения требований</p></div>
-        </div>
-    </div>
-</section>
-
-<section class="reviews" id="reviews">
-    <div class="container">
-        <h2 style="text-align:center;">Отзывы клиентов</h2>
-        <div class="reviews-slider">
-            <div class="review-item"><div class="review-text">"Заказывала дипломную работу по экономике. Юлия выполнила досрочно, уникальность 92%. Защитила на отлично! Рекомендую."</div><div class="review-author"><img src="https://randomuser.me/api/portraits/women/44.jpg" class="author-avatar"><div><h4>Анна Смирнова</h4><p>МГУ, экономический факультет</p></div></div></div>
-        </div>
-    </div>
-</section>
+    </section>
+</main>
 
 <footer class="footer" id="contact">
     <div class="container">
-        <div class="footer-content">
-            <div class="footer-links"><h3>Навигация</h3><ul><li><a href="#home">Главная</a></li><li><a href="#services">Услуги</a></li><li><a href="#portfolio">Портфолио</a></li><li><a href="#reviews">Отзывы</a></li></ul></div>
-            <div class="footer-links"><h3>Услуги</h3><ul><li>Курсовые работы</li><li>Дипломные работы</li><li>Научные статьи</li><li>Рефераты и эссе</li></ul></div>
-            <div class="contact-info"><h3>Контакты</h3><div class="contact-item"><i class="fas fa-envelope"></i> yulia.academic@mail.ru</div><div class="contact-item"><i class="fas fa-phone"></i> +7 (999) 123-45-67</div><div class="contact-item"><i class="fas fa-clock"></i> Пн-Вс: 9:00-22:00</div><div class="social-links"><a href="#" class="social-link"><i class="fab fa-telegram"></i></a><a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a></div></div>
+        <div class="footer-grid">
+            <div><h3>Навигация</h3><p><a href="#home">Главная</a></p><p><a href="#services">Услуги</a></p><p><a href="#portfolio">Портфолио</a></p></div>
+            <div><h3>Услуги</h3><p>Курсовые работы</p><p>Дипломные работы</p><p>Научные статьи</p><p>Рефераты</p></div>
+            <div><h3>Контакты</h3><div class="contact-item"><i class="fas fa-envelope"></i> yulia.academic@mail.ru</div><div class="contact-item"><i class="fas fa-phone"></i> +7 (999) 123-45-67</div><div class="contact-item"><i class="fas fa-clock"></i> Пн-Вс: 9:00-22:00</div><div class="social-links"><a href="#" class="social-link"><i class="fab fa-telegram"></i></a><a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a></div></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2025 Юлия — Автор курсовых и дипломных работ</p></div>
+        <div class="footer-bottom"><p>&copy; 2025 Юлия — Автор курсовых и дипломных работ. Все права защищены.</p></div>
     </div>
 </footer>
 
-<div class="cart-sidebar" id="cartSidebar"><div class="cart-header"><h3>Корзина</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div><div id="cartItemsContainer" style="min-height:200px;"></div><div id="cartSummary" style="display:none;"><div class="cart-total"><span>Итого:</span><span id="cartTotalSum">0 ₽</span></div><button class="btn btn-primary" id="checkoutBtn" style="width:100%;">Оформить заказ</button></div><div id="cartEmptyMsg" style="text-align:center;padding:50px 20px;"><i class="fas fa-shopping-cart" style="font-size:3rem;opacity:0.3;"></i><p>Корзина пуста</p></div></div>
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Корзина</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div>
+    <div id="cartItems"></div>
+    <div id="cartEmpty" style="text-align:center; padding:40px;"><i class="fas fa-shopping-cart" style="font-size:3rem; opacity:0.3;"></i><p>Корзина пуста</p></div>
+    <div id="cartSummary" style="display:none;"><div class="cart-total"><span>Итого:</span><span id="cartTotal">0 ₽</span></div><button class="btn btn-primary" id="checkoutBtn" style="width:100%;">Оформить заказ</button></div>
+</div>
 
 <script>
-    const servicesData = [
-        { id:1, name:"Курсовая работа (базовая)", price:5000, features:["Теоретическая часть","Аналитический раздел","Список литературы","Оформление по ГОСТ"], icon:"fas fa-file-alt" },
-        { id:2, name:"Курсовая работа (сложная)", price:8000, features:["Теория + практика","Расчеты и графики","Приложения","Рецензия"], icon:"fas fa-file-contract" },
-        { id:3, name:"Дипломная работа (бакалавр)", price:15000, features:["Полная структура ВКР","Аналитическая глава","Проектная часть","Презентация"], icon:"fas fa-graduation-cap" },
-        { id:4, name:"Дипломная работа (магистр)", price:25000, features:["Научная новизна","Глубокий анализ","Статистика","Публикация статьи"], icon:"fas fa-user-graduate" },
-        { id:5, name:"Научная статья (ВАК)", price:12000, features:["Аннотация","Ключевые слова","Библиография","Рецензия"], icon:"fas fa-newspaper" },
-        { id:6, name:"Реферат / Эссе", price:2000, features:["Раскрытие темы","Аргументация","Список литературы","Оформление по ГОСТ"], icon:"fas fa-pen-fancy" }
+    const services = [
+        { id:1, name:"Курсовая работа (базовая)", price:5000, features:["Теоретическая часть","Аналитический раздел","Список литературы","Оформление по ГОСТ"], icon:"fa-file-alt" },
+        { id:2, name:"Курсовая работа (сложная)", price:8000, features:["Теория + практика","Расчеты и графики","Приложения","Рецензия"], icon:"fa-file-contract" },
+        { id:3, name:"Дипломная работа (бакалавр)", price:15000, features:["Полная структура ВКР","Аналитическая глава","Проектная часть","Презентация"], icon:"fa-graduation-cap" },
+        { id:4, name:"Дипломная работа (магистр)", price:25000, features:["Научная новизна","Глубокий анализ","Статистика","Публикация статьи"], icon:"fa-user-graduate" },
+        { id:5, name:"Научная статья (ВАК)", price:12000, features:["Аннотация","Ключевые слова","Библиография","Рецензия"], icon:"fa-newspaper" },
+        { id:6, name:"Реферат / Эссе", price:2000, features:["Раскрытие темы","Аргументация","Список литературы","Оформление по ГОСТ"], icon:"fa-pen-fancy" }
     ];
 
-    const portfolioItems = [
+    const portfolio = [
         { title:"Анализ инвестиционной привлекательности предприятия", category:"Экономика", pages:45, unique:92, grade:"5" },
         { title:"Правовое регулирование цифровых активов", category:"Право", pages:65, unique:88, grade:"5" },
         { title:"Инновационные технологии в дошкольном образовании", category:"Педагогика", pages:55, unique:90, grade:"5" }
     ];
 
     let cart = JSON.parse(localStorage.getItem("academic_cart") || "[]");
-    function saveCart(){ localStorage.setItem("academic_cart",JSON.stringify(cart)); updateCartCount(); renderCartSidebar(); }
-    function updateCartCount(){ document.getElementById("cartCount").innerText = cart.reduce((s,i)=>s+i.qty,0); }
-    function addToCart(id){ let item = servicesData.find(s=>s.id==id); if(item){ let existing = cart.find(i=>i.id==id); if(existing) existing.qty++; else cart.push({id:item.id,name:item.name,price:item.price,qty:1}); saveCart(); showNotif(`✅ ${item.name} добавлено`); } }
-    function removeFromCart(idx){ cart.splice(idx,1); saveCart(); }
-    function updateQty(idx,delta){ if(cart[idx]){ cart[idx].qty += delta; if(cart[idx].qty<1) cart.splice(idx,1); saveCart(); } }
-    function showNotif(msg){ let n=document.getElementById("notification"); n.innerText=msg; n.classList.add("show"); setTimeout(()=>n.classList.remove("show"),2500); }
-    function renderCartSidebar(){
-        let container = document.getElementById("cartItemsContainer");
+
+    function saveCart() { localStorage.setItem("academic_cart", JSON.stringify(cart)); updateCartCount(); renderCart(); }
+    function updateCartCount() { document.getElementById("cartCount").innerText = cart.reduce((s,i)=>s+i.qty,0); }
+    function showNotif(msg) { let n=document.getElementById("notification"); n.innerText=msg; n.classList.add("show"); setTimeout(()=>n.classList.remove("show"),2500); }
+    function addToCart(id){
+        let item = services.find(s=>s.id==id);
+        if(item){
+            let existing = cart.find(i=>i.id==id);
+            if(existing) existing.qty++;
+            else cart.push({id:item.id, name:item.name, price:item.price, qty:1});
+            saveCart();
+            showNotif(`✅ ${item.name} добавлено`);
+        }
+    }
+    function removeFromCart(idx) { cart.splice(idx,1); saveCart(); }
+    function updateQty(idx,delta) { if(cart[idx]){ cart[idx].qty+=delta; if(cart[idx].qty<1) cart.splice(idx,1); saveCart(); } }
+    function renderCart(){
+        let container = document.getElementById("cartItems");
+        let emptyDiv = document.getElementById("cartEmpty");
         let summaryDiv = document.getElementById("cartSummary");
-        let emptyDiv = document.getElementById("cartEmptyMsg");
-        if(!cart.length){ container.innerHTML=""; summaryDiv.style.display="none"; emptyDiv.style.display="block"; return; }
+        if(!cart.length){ container.innerHTML=""; emptyDiv.style.display="block"; summaryDiv.style.display="none"; return; }
         emptyDiv.style.display="none"; summaryDiv.style.display="block";
-        let html="";
-        let total=0;
+        let html=""; let total=0;
         cart.forEach((item,idx)=>{
             let subtotal = item.price * item.qty;
             total += subtotal;
-            html += `<div class="cart-item"><div class="cart-item-header"><span class="cart-item-title">${item.name}</span><span class="cart-item-price">${subtotal.toLocaleString()} ₽</span></div><div class="cart-item-controls"><button class="quantity-btn" onclick="updateQty(${idx},-1)">-</button><span style="margin:0 10px;">${item.qty}</span><button class="quantity-btn" onclick="updateQty(${idx},1)">+</button><button class="remove-item" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button></div></div>`;
+            html += `<div class="cart-item"><div class="cart-item-header"><span>${item.name}</span><span>${subtotal.toLocaleString()} ₽</span></div><div><button class="btn-secondary" style="padding:5px 12px;" onclick="updateQty(${idx},-1)">-</button> ${item.qty} <button class="btn-secondary" style="padding:5px 12px;" onclick="updateQty(${idx},1)">+</button> <button style="background:none; border:none; color:#ff6b6b; margin-left:10px;" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button></div></div>`;
         });
         container.innerHTML = html;
-        document.getElementById("cartTotalSum").innerHTML = total.toLocaleString() + " ₽";
+        document.getElementById("cartTotal").innerHTML = total.toLocaleString() + " ₽";
     }
     function renderServices(){
-        let grid = document.getElementById("servicesGrid");
-        if(!grid) return;
-        grid.innerHTML = servicesData.map(s => `
-            <div class="service-card"><div class="service-icon"><i class="${s.icon}"></i></div><h3>${s.name}</h3><div class="service-price">от ${s.price.toLocaleString()} ₽</div><ul class="service-features">${s.features.map(f=>`<li><i class="fas fa-check"></i> ${f}</li>`).join('')}</ul><div class="service-actions"><button class="btn btn-primary" onclick="addToCart(${s.id})"><i class="fas fa-cart-plus"></i> В корзину</button></div></div>
+        document.getElementById("servicesGrid").innerHTML = services.map(s => `
+            <div class="service-card"><div class="service-icon"><i class="fas ${s.icon}"></i></div><h3>${s.name}</h3><div class="service-price">от ${s.price.toLocaleString()} ₽</div><ul class="service-features">${s.features.map(f=>`<li><i class="fas fa-check"></i> ${f}</li>`).join('')}</ul><button class="btn btn-primary" onclick="addToCart(${s.id})"><i class="fas fa-cart-plus"></i> В корзину</button></div>
         `).join('');
     }
     function renderPortfolio(){
-        let grid = document.getElementById("portfolioGrid");
-        if(!grid) return;
-        grid.innerHTML = portfolioItems.map(p => `
-            <div class="service-card" style="text-align:center;"><i class="fas fa-file-alt" style="font-size:2rem;color:var(--accent-color);"></i><h3>${p.title}</h3><p>${p.category} • ${p.pages} стр.</p><p style="color:var(--accent-color);"><i class="fas fa-chart-line"></i> Уникальность: ${p.unique}%</p><span style="background:var(--gold-gradient);color:#0a254e;padding:4px 12px;border-radius:20px;">Оценка: ${p.grade}</span></div>
+        document.getElementById("portfolioGrid").innerHTML = portfolio.map(p => `
+            <div class="portfolio-card"><i class="fas fa-file-alt"></i><h3>${p.title}</h3><p>${p.category} • ${p.pages} стр.</p><p><i class="fas fa-chart-line"></i> Уникальность: ${p.unique}%</p><span class="grade">Оценка: ${p.grade}</span></div>
         `).join('');
     }
     function setupCalculator(){
         let type=document.getElementById("calcType"), subject=document.getElementById("calcSubject"), pages=document.getElementById("calcPages"), unique=document.getElementById("calcUnique");
-        let pagesSpan=document.getElementById("calcPagesVal"), uniqueSpan=document.getElementById("calcUniqueVal"), totalSpan=document.getElementById("calcTotalPrice");
+        let pagesSpan=document.getElementById("pagesVal"), uniqueSpan=document.getElementById("uniqueVal"), totalSpan=document.getElementById("calcTotal");
         function update(){
-            let base=0;
             let t=type.value, s=subject.value, p=parseInt(pages.value), u=parseInt(unique.value);
-            if(t==="coursework") base=150;
-            else if(t==="diploma_bachelor") base=250;
-            else if(t==="diploma_master") base=350;
-            else base=600;
-            if(s==="technical") base*=1.5;
-            else if(s==="economic") base*=1.3;
+            let base= (t==="coursework"?150: t==="diploma_bachelor"?250: t==="diploma_master"?350: 600);
+            if(s==="technical") base*=1.5; else if(s==="economic") base*=1.3;
             let price=base*p;
-            if(u>=90) price*=1.2;
-            else if(u>=85) price*=1.1;
+            if(u>=90) price*=1.2; else if(u>=85) price*=1.1;
             if(t==="coursework" && price<5000) price=5000;
             if(t.includes("diploma") && price<15000) price=15000;
             pagesSpan.innerText=p; uniqueSpan.innerText=u; totalSpan.innerText=Math.round(price).toLocaleString()+" ₽";
@@ -994,14 +776,11 @@
         type.addEventListener("change",update); subject.addEventListener("change",update); pages.addEventListener("input",update); unique.addEventListener("input",update);
         update();
     }
-    function animateStats(){
-        document.querySelectorAll(".stat-number").forEach(el=>{ let target=parseInt(el.dataset.target); let current=0; let interval=setInterval(()=>{ current+=Math.ceil(target/60); if(current>=target){ current=target; clearInterval(interval); } el.innerText=current; },25); });
-    }
-    document.getElementById("cartToggle")?.addEventListener("click",()=>document.getElementById("cartSidebar").classList.add("active"));
-    document.getElementById("closeCart")?.addEventListener("click",()=>document.getElementById("cartSidebar").classList.remove("active"));
-    document.getElementById("checkoutBtn")?.addEventListener("click",()=>{ showNotif("✅ Заявка оформлена! Я свяжусь с вами в течение 30 минут."); cart=[]; saveCart(); renderCartSidebar(); document.getElementById("cartSidebar").classList.remove("active"); });
-    document.getElementById("menuToggle")?.addEventListener("click",()=>alert("Мобильное меню можно добавить позже, сейчас используйте навигацию в шапке"));
-    renderServices(); renderPortfolio(); setupCalculator(); animateStats(); renderCartSidebar(); updateCartCount();
+    document.getElementById("cartToggle").onclick=()=>document.getElementById("cartSidebar").classList.add("active");
+    document.getElementById("closeCart").onclick=()=>document.getElementById("cartSidebar").classList.remove("active");
+    document.getElementById("checkoutBtn").onclick=()=>{ showNotif("✅ Заявка оформлена! Я свяжусь с вами в течение 30 минут."); cart=[]; saveCart(); renderCart(); document.getElementById("cartSidebar").classList.remove("active"); };
+    document.getElementById("menuToggle").onclick=()=>alert("Мобильное меню в разработке. Используйте ссылки на главной.");
+    renderServices(); renderPortfolio(); setupCalculator(); renderCart(); updateCartCount();
 </script>
 </body>
 </html>
