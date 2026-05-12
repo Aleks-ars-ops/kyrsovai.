@@ -13,23 +13,10 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary-dark: #0a254e;
-            --secondary-dark: #1a365d;
-            --accent: #ffd700;
-            --accent-light: #fff8dc;
-            --text-white: #ffffff;
-            --text-gray: #cbd5e0;
-            --card-bg: #1a365d;
-            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            --radius: 16px;
-            --transition: all 0.3s ease;
-        }
-
         body {
             font-family: 'Open Sans', sans-serif;
-            background: var(--primary-dark);
-            color: var(--text-white);
+            background: #0a254e;
+            color: #ffffff;
             line-height: 1.6;
         }
 
@@ -40,12 +27,11 @@
         }
 
         section {
-            padding: 70px 0;
+            padding: 80px 0;
         }
 
-        h1, h2, h3, h4 {
+        h1, h2, h3 {
             font-family: 'Merriweather', serif;
-            font-weight: 700;
         }
 
         h2 {
@@ -55,7 +41,7 @@
             display: inline-block;
         }
 
-        h2:after {
+        h2::after {
             content: '';
             position: absolute;
             bottom: -12px;
@@ -71,7 +57,7 @@
             margin-bottom: 50px;
         }
 
-        .section-header h2:after {
+        .section-header h2::after {
             left: 50%;
             transform: translateX(-50%);
         }
@@ -85,29 +71,29 @@
             border-radius: 40px;
             font-weight: 600;
             text-decoration: none;
-            transition: var(--transition);
+            transition: 0.3s;
             cursor: pointer;
             border: none;
             font-size: 0.95rem;
         }
 
-        .btn-primary {
+        .btn-gold {
             background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: var(--primary-dark);
+            color: #0a254e;
         }
 
-        .btn-primary:hover {
+        .btn-gold:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(255, 215, 0, 0.3);
         }
 
-        .btn-secondary {
+        .btn-outline {
             background: transparent;
-            border: 2px solid var(--accent);
-            color: var(--accent);
+            border: 2px solid #ffd700;
+            color: #ffd700;
         }
 
-        .btn-secondary:hover {
+        .btn-outline:hover {
             background: rgba(255, 215, 0, 0.1);
             transform: translateY(-3px);
         }
@@ -149,7 +135,7 @@
             align-items: center;
             justify-content: center;
             font-size: 1.4rem;
-            color: var(--primary-dark);
+            color: #0a254e;
         }
 
         .logo-text {
@@ -167,20 +153,20 @@
         }
 
         .nav-menu a {
-            color: var(--text-white);
+            color: white;
             text-decoration: none;
             font-weight: 600;
-            transition: var(--transition);
+            transition: 0.3s;
         }
 
         .nav-menu a:hover {
-            color: var(--accent);
+            color: #ffd700;
         }
 
         .cart-btn {
             background: none;
             border: none;
-            color: var(--text-white);
+            color: white;
             font-size: 1.3rem;
             cursor: pointer;
             position: relative;
@@ -190,8 +176,8 @@
             position: absolute;
             top: -10px;
             right: -12px;
-            background: var(--accent);
-            color: var(--primary-dark);
+            background: #ffd700;
+            color: #0a254e;
             font-size: 0.7rem;
             padding: 2px 8px;
             border-radius: 20px;
@@ -202,7 +188,7 @@
             display: none;
             background: none;
             border: none;
-            color: var(--text-white);
+            color: white;
             font-size: 1.5rem;
             cursor: pointer;
         }
@@ -210,7 +196,7 @@
         /* Герой */
         .hero {
             padding-top: 130px;
-            background: linear-gradient(135deg, #0a254e 0%, #1a365d 100%);
+            background: linear-gradient(135deg, #0a254e, #1a365d);
         }
 
         .hero-grid {
@@ -220,17 +206,17 @@
             align-items: center;
         }
 
-        .hero-title {
-            font-size: 2.8rem;
+        .hero h1 {
+            font-size: 3rem;
             background: linear-gradient(135deg, #ffd700, #ffed4e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
         }
 
-        .hero-subtitle {
-            font-size: 1.3rem;
-            color: var(--accent);
+        .hero h2 {
+            font-size: 1.5rem;
+            color: #ffd700;
             margin-bottom: 20px;
         }
 
@@ -244,7 +230,7 @@
         .stat-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: var(--radius);
+            border-radius: 16px;
             text-align: center;
             border: 1px solid rgba(255, 215, 0, 0.2);
         }
@@ -267,13 +253,13 @@
         .guarantee-card {
             background: rgba(255, 255, 255, 0.05);
             padding: 20px;
-            border-radius: var(--radius);
+            border-radius: 16px;
             text-align: center;
         }
 
         .guarantee-card i {
             font-size: 2rem;
-            color: var(--accent);
+            color: #ffd700;
             margin-bottom: 10px;
         }
 
@@ -285,7 +271,7 @@
 
         /* Услуги */
         .services {
-            background: var(--secondary-dark);
+            background: #1a365d;
         }
 
         .services-grid {
@@ -295,28 +281,28 @@
         }
 
         .service-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
+            background: #1a365d;
+            border-radius: 20px;
             padding: 25px;
-            transition: var(--transition);
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: 0.3s;
+            border: 1px solid rgba(255, 215, 0, 0.15);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            border-color: var(--accent);
+            border-color: #ffd700;
         }
 
-        .service-icon {
+        .service-card i {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: #ffd700;
             margin-bottom: 15px;
         }
 
         .service-price {
             font-size: 1.6rem;
             font-weight: 700;
-            color: var(--accent);
+            color: #ffd700;
             margin: 15px 0;
         }
 
@@ -331,18 +317,19 @@
             gap: 10px;
             margin-bottom: 10px;
             font-size: 0.9rem;
-            color: var(--text-gray);
+            color: #cbd5e0;
         }
 
         .service-features i {
-            color: var(--accent);
+            font-size: 0.9rem;
+            color: #ffd700;
             width: 20px;
         }
 
         /* Калькулятор */
         .calculator {
             background: rgba(255, 255, 255, 0.03);
-            border-radius: var(--radius);
+            border-radius: 20px;
             padding: 30px;
             margin-top: 50px;
             border: 1px solid rgba(255, 215, 0, 0.2);
@@ -362,7 +349,7 @@
         }
 
         .calc-group label {
-            color: var(--text-gray);
+            color: #cbd5e0;
             font-size: 0.9rem;
         }
 
@@ -370,15 +357,15 @@
             padding: 12px;
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            color: var(--text-white);
+            border-radius: 12px;
+            color: white;
         }
 
         .calc-total {
             text-align: center;
             padding: 25px;
             background: rgba(255, 215, 0, 0.05);
-            border-radius: var(--radius);
+            border-radius: 20px;
         }
 
         .total-price {
@@ -397,23 +384,23 @@
         }
 
         .portfolio-card {
-            background: var(--card-bg);
-            border-radius: var(--radius);
+            background: #1a365d;
+            border-radius: 20px;
             padding: 25px;
             text-align: center;
-            border: 1px solid rgba(255, 215, 0, 0.1);
+            border: 1px solid rgba(255, 215, 0, 0.15);
         }
 
         .portfolio-card i {
             font-size: 2.5rem;
-            color: var(--accent);
+            color: #ffd700;
             margin-bottom: 15px;
         }
 
         .grade {
             display: inline-block;
-            background: var(--accent);
-            color: var(--primary-dark);
+            background: #ffd700;
+            color: #0a254e;
             padding: 4px 12px;
             border-radius: 20px;
             font-weight: 700;
@@ -428,7 +415,7 @@
             width: 100%;
             max-width: 450px;
             height: 100vh;
-            background: var(--card-bg);
+            background: #1a365d;
             z-index: 1100;
             transition: 0.3s;
             padding: 20px;
@@ -445,19 +432,20 @@
             align-items: center;
             padding-bottom: 15px;
             border-bottom: 1px solid rgba(255, 215, 0, 0.2);
+            margin-bottom: 20px;
         }
 
         .close-cart {
             background: none;
             border: none;
-            color: var(--text-white);
+            color: white;
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         .cart-item {
             background: rgba(255, 255, 255, 0.05);
-            border-radius: var(--radius);
+            border-radius: 16px;
             padding: 15px;
             margin-bottom: 15px;
         }
@@ -480,7 +468,7 @@
 
         /* Футер */
         .footer {
-            background: var(--primary-dark);
+            background: #0a254e;
             padding: 50px 0 20px;
             border-top: 1px solid rgba(255, 215, 0, 0.1);
         }
@@ -495,17 +483,17 @@
         .footer h3 {
             font-size: 1.2rem;
             margin-bottom: 20px;
-            color: var(--accent);
+            color: #ffd700;
         }
 
         .footer a {
-            color: var(--text-gray);
+            color: #cbd5e0;
             text-decoration: none;
             transition: 0.3s;
         }
 
         .footer a:hover {
-            color: var(--accent);
+            color: #ffd700;
         }
 
         .contact-item {
@@ -529,7 +517,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--accent);
+            color: #ffd700;
+            transition: 0.3s;
+        }
+
+        .social-link:hover {
+            background: #ffd700;
+            color: #0a254e;
         }
 
         .footer-bottom {
@@ -545,7 +539,7 @@
             bottom: 20px;
             right: 20px;
             background: linear-gradient(135deg, #ffd700, #ffed4e);
-            color: var(--primary-dark);
+            color: #0a254e;
             padding: 12px 24px;
             border-radius: 50px;
             font-weight: 600;
@@ -558,7 +552,6 @@
             transform: translateX(0);
         }
 
-        /* Адаптив */
         @media (max-width: 992px) {
             .nav-menu {
                 display: none;
@@ -597,15 +590,13 @@
             <div class="logo-icon"><i class="fas fa-graduation-cap"></i></div>
             <span class="logo-text">Юлия</span>
         </a>
-        <nav>
-            <ul class="nav-menu">
-                <li><a href="#home">Главная</a></li>
-                <li><a href="#services">Услуги</a></li>
-                <li><a href="#portfolio">Портфолио</a></li>
-                <li><a href="#reviews">Отзывы</a></li>
-                <li><a href="#contact">Контакты</a></li>
-            </ul>
-        </nav>
+        <ul class="nav-menu">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#portfolio">Портфолио</a></li>
+            <li><a href="#reviews">Отзывы</a></li>
+            <li><a href="#contact">Контакты</a></li>
+        </ul>
         <div class="header-actions">
             <button class="cart-btn" id="cartToggle"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></button>
             <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
@@ -613,97 +604,95 @@
     </div>
 </header>
 
-<main>
-    <section class="hero" id="home">
-        <div class="container">
-            <div class="hero-grid">
-                <div>
-                    <h1 class="hero-title">Юлия</h1>
-                    <h2 class="hero-subtitle">Автор курсовых и дипломных работ</h2>
-                    <p>Профессиональный автор академических работ с 10-летним опытом. Специализируюсь на написании курсовых, дипломных работ, научных статей по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам. Гарантирую качество, уникальность и соблюдение сроков.</p>
-                    
-                    <div class="stats">
-                        <div class="stat-card"><span class="stat-number">10 лет</span><div>опыта</div></div>
-                        <div class="stat-card"><span class="stat-number">520</span><div>работ</div></div>
-                        <div class="stat-card"><span class="stat-number">98%</span><div>уникальность</div></div>
-                        <div class="stat-card"><span class="stat-number">185</span><div>клиентов</div></div>
-                    </div>
-
-                    <div class="guarantees">
-                        <div class="guarantee-card"><i class="fas fa-check-double"></i><h4>100% уникальность</h4><p>Проверка в Antiplagiat</p></div>
-                        <div class="guarantee-card"><i class="fas fa-lock"></i><h4>Конфиденциальность</h4><p>Данные защищены</p></div>
-                        <div class="guarantee-card"><i class="fas fa-clock"></i><h4>Соблюдение сроков</h4><p>Точно вовремя</p></div>
-                        <div class="guarantee-card"><i class="fas fa-sync-alt"></i><h4>Бесплатные доработки</h4><p>Исправления бесплатно</p></div>
-                    </div>
-
-                    <div class="hero-actions">
-                        <a href="#services" class="btn btn-primary">Заказать работу</a>
-                        <a href="#contact" class="btn btn-secondary">Консультация</a>
-                    </div>
+<section class="hero" id="home">
+    <div class="container">
+        <div class="hero-grid">
+            <div>
+                <h1>Юлия</h1>
+                <h2>Автор курсовых и дипломных работ</h2>
+                <p>Профессиональный автор с 10-летним опытом. Пишу курсовые, дипломные, статьи по экономике, юриспруденции, педагогике, психологии и техническим дисциплинам.</p>
+                
+                <div class="stats">
+                    <div class="stat-card"><div class="stat-number">10 лет</div><div>опыта</div></div>
+                    <div class="stat-card"><div class="stat-number">520+</div><div>работ</div></div>
+                    <div class="stat-card"><div class="stat-number">98%</div><div>уникальность</div></div>
+                    <div class="stat-card"><div class="stat-number">185+</div><div>клиентов</div></div>
                 </div>
-                <div>
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Автор" style="width:100%; border-radius:30px;">
+
+                <div class="guarantees">
+                    <div class="guarantee-card"><i class="fas fa-check-double"></i><h3>100% уникальность</h3><p>Проверка в Antiplagiat</p></div>
+                    <div class="guarantee-card"><i class="fas fa-lock"></i><h3>Конфиденциальность</h3><p>Ваши данные под защитой</p></div>
+                    <div class="guarantee-card"><i class="fas fa-clock"></i><h3>Соблюдение сроков</h3><p>Сдаем точно вовремя</p></div>
+                    <div class="guarantee-card"><i class="fas fa-sync-alt"></i><h3>Бесплатные доработки</h3><p>Исправления бесплатно</p></div>
+                </div>
+
+                <div class="hero-actions">
+                    <a href="#services" class="btn btn-gold"><i class="fas fa-file-alt"></i> Заказать работу</a>
+                    <a href="#contact" class="btn btn-outline"><i class="fas fa-headset"></i> Бесплатная консультация</a>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="services" id="services">
-        <div class="container">
-            <div class="section-header"><h2>Услуги и цены</h2><p>Профессиональное написание академических работ</p></div>
-            <div class="services-grid" id="servicesGrid"></div>
-
-            <div class="calculator">
-                <h3 style="text-align:center; margin-bottom:20px;">Калькулятор стоимости</h3>
-                <div class="calculator-grid">
-                    <div class="calc-group"><label>Тип работы</label><select id="calcType"><option value="coursework">Курсовая работа</option><option value="diploma_bachelor">Диплом (бакалавр)</option><option value="diploma_master">Диплом (магистр)</option><option value="article">Научная статья</option></select></div>
-                    <div class="calc-group"><label>Предмет</label><select id="calcSubject"><option value="humanitarian">Гуманитарные</option><option value="economic">Экономические</option><option value="technical">Технические</option></select></div>
-                    <div class="calc-group"><label>Страниц: <span id="pagesVal">30</span></label><input type="range" id="calcPages" min="20" max="100" value="30" step="5"></div>
-                    <div class="calc-group"><label>Уникальность: <span id="uniqueVal">80</span>%</label><input type="range" id="calcUnique" min="70" max="95" value="80" step="5"></div>
-                </div>
-                <div class="calc-total"><h4>Примерная стоимость</h4><div class="total-price" id="calcTotal">6 500 ₽</div><p>Точная стоимость после получения требований</p></div>
+            <div>
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&auto=format" alt="Юлия" style="width:100%; border-radius:30px; box-shadow:0 20px 40px rgba(0,0,0,0.3);">
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section class="portfolio" id="portfolio">
-        <div class="container">
-            <div class="section-header"><h2>Примеры работ</h2><p>Реальные работы студентов</p></div>
-            <div class="portfolio-grid" id="portfolioGrid"></div>
-        </div>
-    </section>
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-header"><h2>Услуги и цены</h2><p>Профессиональное написание академических работ</p></div>
+        <div class="services-grid" id="servicesGrid"></div>
 
-    <section class="reviews" id="reviews">
-        <div class="container">
-            <div class="section-header"><h2>Отзывы клиентов</h2></div>
-            <div style="max-width:800px; margin:0 auto; background:var(--card-bg); padding:30px; border-radius:var(--radius); text-align:center;">
-                <p style="font-style:italic;">"Заказывала дипломную работу по экономике. Юлия выполнила работу досрочно, уникальность 92%. Защитила на отлично! Рекомендую всем, кто ценит качество."</p>
-                <div style="margin-top:20px;"><img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:60px; height:60px; border-radius:50%;"><h4>Анна Смирнова</h4><p>МГУ, экономический факультет</p></div>
+        <div class="calculator">
+            <h3 style="text-align:center; margin-bottom:20px;">💎 Калькулятор стоимости</h3>
+            <div class="calculator-grid">
+                <div class="calc-group"><label>Тип работы</label><select id="calcType"><option value="coursework">Курсовая работа</option><option value="diploma_bachelor">Диплом (бакалавр)</option><option value="diploma_master">Диплом (магистр)</option><option value="article">Научная статья</option></select></div>
+                <div class="calc-group"><label>Предмет</label><select id="calcSubject"><option value="humanitarian">Гуманитарные</option><option value="economic">Экономические</option><option value="technical">Технические</option></select></div>
+                <div class="calc-group"><label>Страниц: <span id="pagesVal">30</span></label><input type="range" id="calcPages" min="20" max="100" value="30" step="5"></div>
+                <div class="calc-group"><label>Уникальность: <span id="uniqueVal">80</span>%</label><input type="range" id="calcUnique" min="70" max="95" value="80" step="5"></div>
             </div>
+            <div class="calc-total"><h4>Примерная стоимость</h4><div class="total-price" id="calcTotal">6 500 ₽</div><p>Точная стоимость после получения требований</p></div>
         </div>
-    </section>
-</main>
+    </div>
+</section>
+
+<section class="portfolio" id="portfolio">
+    <div class="container">
+        <div class="section-header"><h2>Примеры работ</h2><p>Реальные проекты студентов</p></div>
+        <div class="portfolio-grid" id="portfolioGrid"></div>
+    </div>
+</section>
+
+<section class="reviews" id="reviews">
+    <div class="container">
+        <div class="section-header"><h2>Отзывы клиентов</h2></div>
+        <div style="max-width:800px; margin:0 auto; background:#1a365d; padding:30px; border-radius:20px; text-align:center;">
+            <p style="font-style:italic;">"Заказывала дипломную работу по экономике. Юлия выполнила досрочно, уникальность 92%. Защитила на отлично! Рекомендую всем, кто ценит качество и профессионализм."</p>
+            <div style="margin-top:20px;"><img src="https://randomuser.me/api/portraits/women/44.jpg" style="width:60px; height:60px; border-radius:50%;"><h4>Анна Смирнова</h4><p>МГУ, экономический факультет</p></div>
+        </div>
+    </div>
+</section>
 
 <footer class="footer" id="contact">
     <div class="container">
         <div class="footer-grid">
-            <div><h3>Навигация</h3><p><a href="#home">Главная</a></p><p><a href="#services">Услуги</a></p><p><a href="#portfolio">Портфолио</a></p></div>
-            <div><h3>Услуги</h3><p>Курсовые работы</p><p>Дипломные работы</p><p>Научные статьи</p><p>Рефераты</p></div>
+            <div><h3>Навигация</h3><p><a href="#home">Главная</a></p><p><a href="#services">Услуги</a></p><p><a href="#portfolio">Портфолио</a></p><p><a href="#reviews">Отзывы</a></p></div>
+            <div><h3>Услуги</h3><p>Курсовые работы</p><p>Дипломные работы</p><p>Научные статьи</p><p>Рефераты и эссе</p></div>
             <div><h3>Контакты</h3><div class="contact-item"><i class="fas fa-envelope"></i> yulia.academic@mail.ru</div><div class="contact-item"><i class="fas fa-phone"></i> +7 (999) 123-45-67</div><div class="contact-item"><i class="fas fa-clock"></i> Пн-Вс: 9:00-22:00</div><div class="social-links"><a href="#" class="social-link"><i class="fab fa-telegram"></i></a><a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a></div></div>
         </div>
-        <div class="footer-bottom"><p>&copy; 2025 Юлия — Автор курсовых и дипломных работ. Все права защищены.</p></div>
+        <div class="footer-bottom"><p>&copy; 2025 Юлия — Автор курсовых и дипломных работ</p></div>
     </div>
 </footer>
 
 <div class="cart-sidebar" id="cartSidebar">
-    <div class="cart-header"><h3>Корзина</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div>
+    <div class="cart-header"><h3>🛒 Корзина</h3><button class="close-cart" id="closeCart"><i class="fas fa-times"></i></button></div>
     <div id="cartItems"></div>
     <div id="cartEmpty" style="text-align:center; padding:40px;"><i class="fas fa-shopping-cart" style="font-size:3rem; opacity:0.3;"></i><p>Корзина пуста</p></div>
-    <div id="cartSummary" style="display:none;"><div class="cart-total"><span>Итого:</span><span id="cartTotal">0 ₽</span></div><button class="btn btn-primary" id="checkoutBtn" style="width:100%;">Оформить заказ</button></div>
+    <div id="cartSummary" style="display:none;"><div class="cart-total"><span>Итого:</span><span id="cartTotal">0 ₽</span></div><button class="btn btn-gold" id="checkoutBtn" style="width:100%;">Оформить заказ</button></div>
 </div>
 
 <script>
-    const services = [
+    const servicesData = [
         { id:1, name:"Курсовая работа (базовая)", price:5000, features:["Теоретическая часть","Аналитический раздел","Список литературы","Оформление по ГОСТ"], icon:"fa-file-alt" },
         { id:2, name:"Курсовая работа (сложная)", price:8000, features:["Теория + практика","Расчеты и графики","Приложения","Рецензия"], icon:"fa-file-contract" },
         { id:3, name:"Дипломная работа (бакалавр)", price:15000, features:["Полная структура ВКР","Аналитическая глава","Проектная часть","Презентация"], icon:"fa-graduation-cap" },
@@ -712,7 +701,7 @@
         { id:6, name:"Реферат / Эссе", price:2000, features:["Раскрытие темы","Аргументация","Список литературы","Оформление по ГОСТ"], icon:"fa-pen-fancy" }
     ];
 
-    const portfolio = [
+    const portfolioData = [
         { title:"Анализ инвестиционной привлекательности предприятия", category:"Экономика", pages:45, unique:92, grade:"5" },
         { title:"Правовое регулирование цифровых активов", category:"Право", pages:65, unique:88, grade:"5" },
         { title:"Инновационные технологии в дошкольном образовании", category:"Педагогика", pages:55, unique:90, grade:"5" }
@@ -723,18 +712,21 @@
     function saveCart() { localStorage.setItem("academic_cart", JSON.stringify(cart)); updateCartCount(); renderCart(); }
     function updateCartCount() { document.getElementById("cartCount").innerText = cart.reduce((s,i)=>s+i.qty,0); }
     function showNotif(msg) { let n=document.getElementById("notification"); n.innerText=msg; n.classList.add("show"); setTimeout(()=>n.classList.remove("show"),2500); }
+
     function addToCart(id){
-        let item = services.find(s=>s.id==id);
+        let item = servicesData.find(s=>s.id==id);
         if(item){
             let existing = cart.find(i=>i.id==id);
             if(existing) existing.qty++;
             else cart.push({id:item.id, name:item.name, price:item.price, qty:1});
             saveCart();
-            showNotif(`✅ ${item.name} добавлено`);
+            showNotif(`✅ ${item.name} добавлено в корзину`);
         }
     }
+
     function removeFromCart(idx) { cart.splice(idx,1); saveCart(); }
     function updateQty(idx,delta) { if(cart[idx]){ cart[idx].qty+=delta; if(cart[idx].qty<1) cart.splice(idx,1); saveCart(); } }
+
     function renderCart(){
         let container = document.getElementById("cartItems");
         let emptyDiv = document.getElementById("cartEmpty");
@@ -745,23 +737,29 @@
         cart.forEach((item,idx)=>{
             let subtotal = item.price * item.qty;
             total += subtotal;
-            html += `<div class="cart-item"><div class="cart-item-header"><span>${item.name}</span><span>${subtotal.toLocaleString()} ₽</span></div><div><button class="btn-secondary" style="padding:5px 12px;" onclick="updateQty(${idx},-1)">-</button> ${item.qty} <button class="btn-secondary" style="padding:5px 12px;" onclick="updateQty(${idx},1)">+</button> <button style="background:none; border:none; color:#ff6b6b; margin-left:10px;" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button></div></div>`;
+            html += `<div class="cart-item"><div class="cart-item-header"><span>${item.name}</span><span>${subtotal.toLocaleString()} ₽</span></div><div><button class="btn-outline" style="padding:5px 12px;" onclick="updateQty(${idx},-1)">-</button> <span style="margin:0 10px;">${item.qty}</span> <button class="btn-outline" style="padding:5px 12px;" onclick="updateQty(${idx},1)">+</button> <button style="background:none; border:none; color:#ff6b6b; margin-left:10px;" onclick="removeFromCart(${idx})"><i class="fas fa-trash"></i></button></div></div>`;
         });
         container.innerHTML = html;
         document.getElementById("cartTotal").innerHTML = total.toLocaleString() + " ₽";
     }
+
     function renderServices(){
-        document.getElementById("servicesGrid").innerHTML = services.map(s => `
-            <div class="service-card"><div class="service-icon"><i class="fas ${s.icon}"></i></div><h3>${s.name}</h3><div class="service-price">от ${s.price.toLocaleString()} ₽</div><ul class="service-features">${s.features.map(f=>`<li><i class="fas fa-check"></i> ${f}</li>`).join('')}</ul><button class="btn btn-primary" onclick="addToCart(${s.id})"><i class="fas fa-cart-plus"></i> В корзину</button></div>
+        let grid = document.getElementById("servicesGrid");
+        if(grid) grid.innerHTML = servicesData.map(s => `
+            <div class="service-card"><i class="fas ${s.icon}"></i><h3>${s.name}</h3><div class="service-price">от ${s.price.toLocaleString()} ₽</div><ul class="service-features">${s.features.map(f=>`<li><i class="fas fa-check"></i> ${f}</li>`).join('')}</ul><button class="btn btn-gold" onclick="addToCart(${s.id})"><i class="fas fa-cart-plus"></i> В корзину</button></div>
         `).join('');
     }
+
     function renderPortfolio(){
-        document.getElementById("portfolioGrid").innerHTML = portfolio.map(p => `
+        let grid = document.getElementById("portfolioGrid");
+        if(grid) grid.innerHTML = portfolioData.map(p => `
             <div class="portfolio-card"><i class="fas fa-file-alt"></i><h3>${p.title}</h3><p>${p.category} • ${p.pages} стр.</p><p><i class="fas fa-chart-line"></i> Уникальность: ${p.unique}%</p><span class="grade">Оценка: ${p.grade}</span></div>
         `).join('');
     }
+
     function setupCalculator(){
         let type=document.getElementById("calcType"), subject=document.getElementById("calcSubject"), pages=document.getElementById("calcPages"), unique=document.getElementById("calcUnique");
+        if(!type) return;
         let pagesSpan=document.getElementById("pagesVal"), uniqueSpan=document.getElementById("uniqueVal"), totalSpan=document.getElementById("calcTotal");
         function update(){
             let t=type.value, s=subject.value, p=parseInt(pages.value), u=parseInt(unique.value);
@@ -776,10 +774,12 @@
         type.addEventListener("change",update); subject.addEventListener("change",update); pages.addEventListener("input",update); unique.addEventListener("input",update);
         update();
     }
-    document.getElementById("cartToggle").onclick=()=>document.getElementById("cartSidebar").classList.add("active");
-    document.getElementById("closeCart").onclick=()=>document.getElementById("cartSidebar").classList.remove("active");
-    document.getElementById("checkoutBtn").onclick=()=>{ showNotif("✅ Заявка оформлена! Я свяжусь с вами в течение 30 минут."); cart=[]; saveCart(); renderCart(); document.getElementById("cartSidebar").classList.remove("active"); };
-    document.getElementById("menuToggle").onclick=()=>alert("Мобильное меню в разработке. Используйте ссылки на главной.");
+
+    document.getElementById("cartToggle")?.addEventListener("click",()=>document.getElementById("cartSidebar").classList.add("active"));
+    document.getElementById("closeCart")?.addEventListener("click",()=>document.getElementById("cartSidebar").classList.remove("active"));
+    document.getElementById("checkoutBtn")?.addEventListener("click",()=>{ showNotif("✅ Заявка оформлена! Я свяжусь с вами в течение 30 минут."); cart=[]; saveCart(); renderCart(); document.getElementById("cartSidebar").classList.remove("active"); });
+    document.getElementById("menuToggle")?.addEventListener("click",()=>alert("📱 Мобильное меню появится позже. Пока используйте ссылки вверху."));
+
     renderServices(); renderPortfolio(); setupCalculator(); renderCart(); updateCartCount();
 </script>
 </body>
